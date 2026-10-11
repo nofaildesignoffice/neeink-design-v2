@@ -787,15 +787,17 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-hero .hero-slide.is-active p{animation:v2up .8s cubic-bezier(.215,.61,.355,1) both .35s}
 @keyframes v2up{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 .v2-hero p{font-family:var(--serif-ko);font-size:clamp(16px,1.3vw,24px);color:rgba(255,255,255,.92);letter-spacing:-.05em}
-.v2-hero .hero-cta{left:max(20px,calc(50vw - 700px));transform:none;bottom:clamp(100px,12vh,150px)}
+.v2-hero .hero-cta{left:max(20px,calc(50vw - 700px));transform:none;bottom:clamp(100px,12vh,150px);display:flex;align-items:center;gap:12px}
+.v2-hero .hero-arrow{position:static;transform:none;display:flex;flex:none;width:60px;height:60px;border:1px solid #fff;border-radius:50%;background:transparent;color:#fff;transition:background .3s,color .3s}
+.v2-hero .hero-arrow:hover{background:#fff;color:var(--pp-d)}
+.v2-hero .hero-arrow svg{width:20px;height:20px}
+.v2-hero .hero-cta .btn{margin-right:8px}
+/* 히어로 진행 게이지 — 리뷰 아크 게이지와 동일 */
+.v2-hero .hero-dots{left:50%;transform:translateX(-50%);bottom:clamp(40px,5vh,60px);width:290px;height:27px;gap:0;display:flex}
+.v2-hero .hero-dots .track{position:absolute;left:0;top:6px;width:100%;height:1px;background:rgba(255,255,255,.5)}
+.v2-hero .hero-dots .fill{position:absolute;left:0;top:6px;width:0;height:1px;background:#fff;transition:width .4s ease}
+.v2-hero .hero-dots button,.v2-hero .hero-dots button.is-active{flex:1;width:auto;height:100%;border-radius:0;background:transparent;position:relative;z-index:1}
 /* 우하단 흰 카드: 점 + 이전/다음 */
-.v2-hero .hero-dots{left:auto;right:calc(max(20px,calc(50vw - 700px)) + 56px);transform:none;bottom:clamp(100px,12vh,150px);height:56px;padding:0 28px;align-items:center;background:#fff;border-radius:6px 0 0 6px;gap:8px}
-.v2-hero .hero-dots button{width:6px;height:6px;background:#d6cfdc}
-.v2-hero .hero-dots button.is-active{background:var(--pp);width:22px;border-radius:3px}
-.v2-hero .hero-arrow{top:auto;transform:none;width:56px;height:28px;border:none;border-radius:0;background:#efedf1;color:var(--pp-d);bottom:clamp(100px,12vh,150px)}
-.v2-hero .hero-arrow.next{right:max(20px,calc(50vw - 700px));left:auto;bottom:calc(clamp(100px,12vh,150px) + 28px);background:var(--pp);color:#fff;border-radius:0 6px 0 0}
-.v2-hero .hero-arrow.prev{right:max(20px,calc(50vw - 700px));left:auto;border-radius:0 0 6px 0}
-.v2-hero .hero-arrow svg{width:16px;height:16px}
 
 /* 2·3 Reviews + Stats — sc_info.group_info1: 히어로 위로 올라오는 라운드 다크 패널 + 원형 아크 카드 슬라이더 */
 .v2-info{position:relative;z-index:2;color:#fff;overflow:hidden;border-radius:103px 103px 0 0;padding-bottom:clamp(90px,8vw,150px);background:radial-gradient(60% 45% at 50% 62%,rgba(144,112,175,.38),transparent 70%),radial-gradient(40% 30% at 12% 8%,rgba(110,64,154,.35),transparent 70%),linear-gradient(180deg,#2c2235 0%,#1f1b22 55%,#1a161d 100%)}
@@ -961,8 +963,10 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .arc-progress{position:relative;top:auto;left:auto;transform:none;margin:10px auto 0;width:min(290px,70vw)}
   .v2-hero h1,.v2-hero h2{font-size:30px}
   .v2-hero p{font-size:16px}
-  .v2-hero .hero-cta{bottom:120px;left:20px}
-  .v2-hero .hero-dots{bottom:56px;right:auto;left:20px;height:40px;padding:0 18px;border-radius:6px}
+  .v2-hero .hero-cta{bottom:100px;left:20px;gap:8px}
+  .v2-hero .hero-cta .btn{margin-right:4px}
+  .v2-hero .hero-arrow{width:48px;height:48px}
+  .v2-hero .hero-dots{width:min(290px,70vw);bottom:40px}
   .v2-info-stats .stats{grid-template-columns:1fr 1fr}
   .v2-info-stats .stats>div{padding:26px 18px;min-height:0}
   .v2-info-stats .stats .k{font-size:13px}
@@ -1030,10 +1034,8 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
       <p>래쉬애딕트 3종과 200여 명의 마스터크루</p>
     </div>
   </div>
-  <button class="hero-arrow prev" id="hPrev"><i data-lucide="chevron-left"></i></button>
-  <button class="hero-arrow next" id="hNext"><i data-lucide="chevron-right"></i></button>
-  <div class="hero-cta"><a href="#edu" class="btn btn-primary btn-arrow">교육 과정 보기</a></div>
-  <div class="hero-dots" id="hDots"><button class="is-active"></button><button></button><button></button></div>
+  <div class="hero-cta"><a href="#edu" class="btn btn-primary btn-arrow">교육 과정 보기</a><button class="hero-arrow prev" id="hPrev" aria-label="이전 슬라이드"><i data-lucide="chevron-left"></i></button><button class="hero-arrow next" id="hNext" aria-label="다음 슬라이드"><i data-lucide="chevron-right"></i></button></div>
+  <div class="hero-dots" id="hDots"><span class="track"></span><span class="fill"></span><button class="is-active" aria-label="슬라이드 1"></button><button aria-label="슬라이드 2"></button><button aria-label="슬라이드 3"></button></div>
 </section>
 
 <!-- ================= 섹션 2·3 : 후기 + 신뢰 지표 (신유외과 sc_info — 히어로 위로 올라오는 라운드 패널) ================= -->
@@ -1244,11 +1246,11 @@ document.querySelectorAll('[data-car]').forEach(function(c){
 });
 
 
-var slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('#hDots button'),hi=0,timer;
-function go(n){hi=(n+slides.length)%slides.length;slides.forEach(function(s,i){s.classList.toggle('is-active',i===hi)});dots.forEach(function(d,i){d.classList.toggle('is-active',i===hi)})}
+var slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('#hDots button'),hFill=document.querySelector('#hDots .fill'),hi=0,timer;
+function go(n){hi=(n+slides.length)%slides.length;slides.forEach(function(s,i){s.classList.toggle('is-active',i===hi)});dots.forEach(function(d,i){d.classList.toggle('is-active',i===hi)});var T=hFill.parentNode.offsetWidth,M=T*68/290;hFill.style.width=(M+hi/(slides.length-1)*(T-M))+'px'}
 function play(){timer=setInterval(function(){go(hi+1)},4500)}function reset(){clearInterval(timer);play()}
 dots.forEach(function(d,i){d.onclick=function(){go(i);reset()}});
-document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.getElementById('hNext').onclick=function(){go(hi+1);reset()};play();
+document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.getElementById('hNext').onclick=function(){go(hi+1);reset()};go(0);window.addEventListener('resize',function(){go(hi)});play();
 /* 후기 — 신유외과 s04_swiper 원형 아크: 가운데 카드 기준 양옆 카드가 회전·하강·축소, 3초 자동 전환 */
 (function(){
   var root=document.getElementById('rvArc'),cards=[].slice.call(root.querySelectorAll('.arc-card')),num=root.querySelector('.arc-num'),fill=root.querySelector('.arc-progress .fill'),n=cards.length,a=0,t,prev=[];

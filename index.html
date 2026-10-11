@@ -1264,7 +1264,7 @@ document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.g
     cards.forEach(function(c,i){
       var d=((i-a)%n+n+Math.floor(n/2))%n-Math.floor(n/2),x=d*(cw+gap),tr,op;
       if(P){var p=Math.max(-2,Math.min(2,d)),ab=Math.abs(p),k=Math.min(1,ab),y=ab<=1?ab*P.Y:P.Y+(ab-1)*P.Y;
-        tr='translateX('+x+'px) translateY('+y+'px) rotate('+(-p*22)+'deg) scale('+(1-k*.25)+')';op=ab<=1?1-k*.8:Math.max(0,.2*(2-ab));}
+        tr='translateX('+x+'px) translateY('+y+'px) rotate('+(p*22)+'deg) scale('+(1-k*.25)+')';op=ab<=1?1-k*.8:Math.max(0,.2*(2-ab));}
       else{tr='translateX('+x+'px)';op=Math.abs(d)<=1?1:0}
       c.style.transition=(prev[i]!==undefined&&Math.abs(prev[i]-d)>1)?'none':'';prev[i]=d;
       c.style.transform=tr;c.style.opacity=op;c.style.zIndex=d===0?5:Math.abs(d)<=1?2:1;c.style.pointerEvents=op<.05?'none':'';

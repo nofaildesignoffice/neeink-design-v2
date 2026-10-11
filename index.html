@@ -541,8 +541,6 @@ body{color:var(--tx);letter-spacing:-.03em;background:var(--iv)}
 
 /* 타이포 — cl-head: ( Eyebrow ) athena 15px 퍼플 → 나눔명조 42px → 본문 18px */
 .section-label{font-family:var(--serif-en);font-size:17px;font-weight:400;letter-spacing:-.01em;text-transform:none;color:var(--pp);line-height:1.2;margin-bottom:20px}
-.section-label::before{content:"( "}
-.section-label::after{content:" )"}
 .section-title{font-family:var(--serif-ko);font-size:clamp(26px,2.19vw,42px);font-weight:400;letter-spacing:-.06em;line-height:1.3;color:#000;margin-bottom:24px}
 .section-desc{font-size:clamp(14px,.94vw,18px);line-height:1.6;color:var(--tx);max-width:1000px;margin-bottom:clamp(30px,3.125vw,60px);letter-spacing:-.03em}
 .text-center .section-desc{margin-left:auto;margin-right:auto}
@@ -825,20 +823,18 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .arc-card{position:absolute;left:50%;top:0;width:482px;height:637px;margin-left:-241px;counter-increment:arc;transform-origin:center center;will-change:transform;transition:transform .5s cubic-bezier(.25,.46,.45,.94),opacity .5s;overflow:hidden;isolation:isolate}
 .arc-card .img-placeholder{position:absolute;inset:0;aspect-ratio:auto;border:none;border-radius:0;background:radial-gradient(60% 50% at 50% 35%,#d9cde3 0%,rgba(217,205,227,0) 70%),linear-gradient(170deg,#b5a6c2 0%,#8d7f97 55%,#5d5068 100%);color:rgba(255,255,255,.5)}
 .arc-card:nth-child(even) .img-placeholder{background:radial-gradient(60% 50% at 50% 35%,#e6d9cb 0%,rgba(230,217,203,0) 70%),linear-gradient(170deg,#bfb1a3 0%,#948677 55%,#62574d 100%)}
-.arc-card .img-placeholder::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.28))}
-.arc-meta{position:absolute;left:46px;right:46px;bottom:52px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:11px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
 .arc-card.is-active .arc-meta{opacity:1;visibility:visible}
-.arc-meta .pg::before{content:counter(arc,decimal-leading-zero) " / 10";font-family:var(--serif-en);font-size:25px;letter-spacing:-.04em;line-height:1.2;color:#fff;white-space:nowrap}
-.arc-meta .ln{display:block;width:100%;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,#fff 50%,rgba(255,255,255,0) 100%)}
-.arc-progress{position:absolute;left:50%;top:708px;transform:translateX(-50%);width:290px;height:27px;z-index:6}
+.arc-card .img-placeholder::after{content:"";position:absolute;left:0;right:0;bottom:0;height:62%;background:linear-gradient(180deg,rgba(20,14,26,0) 0%,rgba(20,14,26,.55) 55%,rgba(20,14,26,.8) 100%);opacity:.45;transition:opacity .4s}
+.arc-card.is-active .img-placeholder::after{opacity:1}
+.arc-meta{position:absolute;left:46px;right:46px;bottom:52px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s,visibility .4s,transform .4s}
+.arc-card.is-active .arc-meta{opacity:1;visibility:visible;transform:none}
+.arc-meta .m{order:-1;padding:11px 24px;font-size:14px;color:#fff;letter-spacing:-.02em;border:1px solid rgba(255,255,255,.6);border-radius:50%;white-space:nowrap}
+.arc-meta .q{font-family:var(--serif-ko);font-size:clamp(17px,1.2vw,21px);line-height:1.6;letter-spacing:-.05em;color:rgba(255,255,255,.9);word-break:keep-all}
+.arc-meta .q strong{color:#fff;font-weight:700}
+.arc-num{position:absolute;left:50%;top:666px;transform:translateX(-50%);margin:0;font-family:var(--serif-en);font-weight:300;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.2;white-space:nowrap;z-index:6}
+.arc-progress{position:absolute;left:50%;top:716px;transform:translateX(-50%);width:290px;height:27px;z-index:6}
 .arc-progress .track{position:absolute;left:0;top:6px;width:100%;height:1px;background:rgba(255,255,255,.5)}
 .arc-progress .fill{position:absolute;left:0;top:6px;width:0;height:1px;background:#fff;transition:width .4s ease}
-.arc-text{position:absolute;z-index:7;top:90px;right:max(20px,5vw);width:min(400px,calc(50vw - 241px - 5vw - 24px));display:grid;pointer-events:none}
-.arc-t{grid-area:1/1;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;opacity:0;transition:opacity .5s}
-.arc-t.is-active{opacity:1}
-.arc-t .m{order:-1;padding:12px 24px;font-size:14px;color:#fff;letter-spacing:-.02em;border:1px solid rgba(255,255,255,.55);border-radius:50%;white-space:nowrap}
-.arc-t .q{font-family:var(--serif-ko);font-size:clamp(17px,1.25vw,22px);line-height:1.6;letter-spacing:-.05em;color:rgba(255,255,255,.88);word-break:keep-all}
-.arc-t .q strong{color:#fff;font-weight:700}
 .v2-info-stats{position:relative;z-index:3;margin-top:clamp(40px,4vw,80px)}
 .v2-info-stats .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:none;border-radius:0;background:transparent;overflow:visible;border-top:1px solid rgba(255,255,255,.18);border-left:1px solid rgba(255,255,255,.18)}
 .v2-info-stats .stats>div{border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);padding:clamp(36px,4vw,72px) clamp(24px,2.2vw,42px);min-height:clamp(150px,13.9vw,200px);text-align:left;display:flex;flex-direction:column;justify-content:flex-start;transition:background .4s}
@@ -927,10 +923,10 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .arc-ring::after{width:1760px;height:1760px}
   .arc-track{height:522px}
   .arc-card{width:395px;height:522px;margin-left:-197.5px}
-  .arc-meta{left:36px;right:36px;bottom:42px;gap:9px}
-  .arc-meta .pg::before{font-size:20px}
-  .arc-progress{top:580px;width:240px}
-  .arc-text{top:70px;width:min(320px,calc(50vw - 197px - 5vw - 20px))}
+  .arc-meta{left:32px;right:32px;bottom:40px;gap:16px}
+  .arc-meta .q{font-size:16px}
+  .arc-num{top:546px;font-size:20px}
+  .arc-progress{top:590px;width:240px}
 }
 @media (max-width:1024px){
   .v2-info{border-radius:60px 60px 0 0}
@@ -938,12 +934,13 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .arc-ring{top:200px;width:1600px;height:490px}
   .arc-ring i,.arc-ring::before{width:1600px;height:1600px}
   .arc-ring::after{width:1480px;height:1480px}
-  .arc-track{height:450px;margin-bottom:200px}
+  .arc-track{height:450px;margin-bottom:110px}
   .arc-card{width:340px;height:450px;margin-left:-170px}
-  .arc-meta{left:28px;right:28px;bottom:36px;gap:8px}
-  .arc-meta .pg::before{font-size:18px}
-  .arc-progress{top:500px;width:200px}
-  .arc-text{position:relative;top:auto;right:auto;width:auto;max-width:560px;margin:0 auto;padding:0 24px}
+  .arc-meta{left:24px;right:24px;bottom:30px;gap:14px}
+  .arc-meta .q{font-size:14.5px}
+  .arc-meta .m{font-size:13px;padding:9px 18px}
+  .arc-num{top:470px;font-size:18px}
+  .arc-progress{top:508px;width:200px}
   .v2-svc .split,.v2-svc-b .split{gap:32px}
   .v2-prog-list{grid-template-columns:1fr;max-width:640px;margin:0 auto}
   .v2-value .split>div:not(.img-placeholder){padding:80px 40px}
@@ -956,12 +953,12 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .v2-info{border-radius:20px 20px 0 0}
   .v2-info .sp-glow{top:60px;right:-80px;width:220px;height:220px}
   .arc-ring{display:none}
-  .arc-track{height:auto;aspect-ratio:482/637;width:min(62vw,300px);margin:0 auto}
+  .arc-track{height:auto;aspect-ratio:482/637;width:min(80vw,330px);margin:0 auto}
   .arc-card{width:100%;height:100%;left:0;margin-left:0}
-  .arc-meta{left:20px;right:20px;bottom:28px}
-  .arc-progress{position:relative;top:auto;left:auto;transform:none;margin:28px auto 0;width:min(290px,70vw)}
-  .arc-text{margin-top:28px;padding:0 20px}
-  .arc-t .q{font-size:16px}
+  .arc-meta{left:20px;right:20px;bottom:24px;gap:12px}
+  .arc-meta .q{font-size:14px;line-height:1.55}
+  .arc-num{position:relative;top:auto;left:auto;transform:none;text-align:center;margin-top:24px;font-size:17px}
+  .arc-progress{position:relative;top:auto;left:auto;transform:none;margin:10px auto 0;width:min(290px,70vw)}
   .v2-hero h1,.v2-hero h2{font-size:30px}
   .v2-hero p{font-size:16px}
   .v2-hero .hero-cta{bottom:120px;left:20px}
@@ -1051,30 +1048,19 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   <div class="v2-arc" id="rvArc">
     <div class="arc-ring" aria-hidden="true"><i></i></div>
     <div class="arc-track">
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
-        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">지금은 거의 <strong>복불복 없이 일정하게 결과</strong>가 나와요. 고객 컴플레인도 확 줄었고, 모발 끝 지글거림이나 AS 요청도 거의 없어졌어요.</p><p class="m">급속교정 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">그동안 프롬프트 판매하는 거 이것저것 사보면서 돈은 돈대로 썼는데, 만족스러운 결과물은 10장 중에 1장 나올까 말까 … <strong>이건 진짜 대면으로 하루라도 빨리 들어야 하는 수업</strong>이에요.</p><p class="m">AI 마케팅 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">제가 <strong>롯드를 완전히 기준도 감도 없이 골랐다</strong>는 걸 알았습니다. 눈매 딱 보라고 했던 것만 보니까 어떤 눈이 와도 어렵지 않아요.</p><p class="m">급속교정 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">솔직히 컴퓨터 진짜 약한 편이라 수업 가기 전날까지도 걱정했어요 … <strong>저도 제가 가진 사진으로 이렇게 만들어볼 수 있구나</strong> 싶어서 진짜 신기했어요.</p><p class="m">AI 마케팅 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">원래 네일이랑 왁싱 샵 운영하고 있는데 … 다음 예약으로도 연결돼서 <strong>바로 네이버에 메뉴 추가</strong>했어요.</p><p class="m">급속교정 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">사진 10장을 돌려도 한 장 건질까 말까 해서 결국 포기하고 쌓아둔 사진만 가득했는데 <strong>이제 제 사진 창고 개방합니다</strong>!!!</p><p class="m">AI 마케팅 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">속눈썹펌 매출도 예전보다 두 배 이상 늘었고, 단골 고객님들도 많이 생겼어요. 무엇보다 <strong>‘될까?’라는 불안감 대신 ‘이렇게 하면 된다’는 확신</strong>이 생기더라구요.</p><p class="m">급속교정 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">제일 좋았던 건 그냥 예쁘게 보정하는 법이 아니라 <strong>시술 결과 자체는 절대 바뀌지 않으면서</strong> 디테일을 살리는 방법을 알려주신다는 점이었어요.</p><p class="m">AI 마케팅 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">저 부산에서 KTX 타고 왔어요 … 특히 <strong>재료 선택하는 기준이랑 고객 유형별로 어떻게 다르게 접근</strong>해야 하는지 배운 게 진짜 실전에서 바로 써먹히더라고요.</p><p class="m">급속교정 클래스</p></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta"><p class="q">인스타 영상 아무리 많이 봐도 알 수 없는 것들을 <strong>하루 만에 배웠어요</strong>. 독학으로 쌓은 시간이 아깝다기보다 이제 그게 다 제대로 정리된 느낌이에요.</p><p class="m">급속교정 클래스</p></div></article>
     </div>
+    <p class="arc-num" aria-hidden="true"></p>
     <div class="arc-progress" aria-hidden="true"><span class="track"></span><span class="fill"></span></div>
-    <div class="arc-text">
-      <div class="arc-t"><p class="q">지금은 거의 <strong>복불복 없이 일정하게 결과</strong>가 나와요. 고객 컴플레인도 확 줄었고, 모발 끝 지글거림이나 AS 요청도 거의 없어졌어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">그동안 프롬프트 판매하는 거 이것저것 사보면서 돈은 돈대로 썼는데, 만족스러운 결과물은 10장 중에 1장 나올까 말까 … <strong>이건 진짜 대면으로 하루라도 빨리 들어야 하는 수업</strong>이에요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">제가 <strong>롯드를 완전히 기준도 감도 없이 골랐다</strong>는 걸 알았습니다. 눈매 딱 보라고 했던 것만 보니까 어떤 눈이 와도 어렵지 않아요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">솔직히 컴퓨터 진짜 약한 편이라 수업 가기 전날까지도 걱정했어요 … <strong>저도 제가 가진 사진으로 이렇게 만들어볼 수 있구나</strong> 싶어서 진짜 신기했어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">원래 네일이랑 왁싱 샵 운영하고 있는데 … 다음 예약으로도 연결돼서 <strong>바로 네이버에 메뉴 추가</strong>했어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">사진 10장을 돌려도 한 장 건질까 말까 해서 결국 포기하고 쌓아둔 사진만 가득했는데 <strong>이제 제 사진 창고 개방합니다</strong>!!!</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">속눈썹펌 매출도 예전보다 두 배 이상 늘었고, 단골 고객님들도 많이 생겼어요. 무엇보다 <strong>‘될까?’라는 불안감 대신 ‘이렇게 하면 된다’는 확신</strong>이 생기더라구요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">제일 좋았던 건 그냥 예쁘게 보정하는 법이 아니라 <strong>시술 결과 자체는 절대 바뀌지 않으면서</strong> 디테일을 살리는 방법을 알려주신다는 점이었어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">저 부산에서 KTX 타고 왔어요 … 특히 <strong>재료 선택하는 기준이랑 고객 유형별로 어떻게 다르게 접근</strong>해야 하는지 배운 게 진짜 실전에서 바로 써먹히더라고요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-      <div class="arc-t"><p class="q">인스타 영상 아무리 많이 봐도 알 수 없는 것들을 <strong>하루 만에 배웠어요</strong>. 독학으로 쌓은 시간이 아깝다기보다 이제 그게 다 제대로 정리된 느낌이에요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
-    </div>
   </div>
   <div class="container v2-info-stats">
     <div class="stats">
@@ -1269,7 +1255,7 @@ dots.forEach(function(d,i){d.onclick=function(){go(i);reset()}});
 document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.getElementById('hNext').onclick=function(){go(hi+1);reset()};play();
 /* 후기 — 신유외과 s04_swiper 원형 아크: 가운데 카드 기준 양옆 카드가 회전·하강·축소, 3초 자동 전환 */
 (function(){
-  var root=document.getElementById('rvArc'),cards=[].slice.call(root.querySelectorAll('.arc-card')),txt=[].slice.call(root.querySelectorAll('.arc-t')),fill=root.querySelector('.arc-progress .fill'),n=cards.length,a=0,t,prev=[];
+  var root=document.getElementById('rvArc'),cards=[].slice.call(root.querySelectorAll('.arc-card')),num=root.querySelector('.arc-num'),fill=root.querySelector('.arc-progress .fill'),n=cards.length,a=0,t,prev=[];
   function prm(){var w=innerWidth;return w<=768?null:w<=1024?{Y:140}:w<=1200?{Y:164}:{Y:200}}
   function lay(){
     var P=prm(),cw=cards[0].offsetWidth,gap=innerWidth<=768?16:innerWidth<=1024?64:88;
@@ -1282,7 +1268,7 @@ document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.g
       c.style.transform=tr;c.style.opacity=op;c.style.zIndex=d===0?5:Math.abs(d)<=1?2:1;c.style.pointerEvents=op<.05?'none':'';
       c.classList.toggle('is-active',d===0);
     });
-    txt.forEach(function(e,i){e.classList.toggle('is-active',i===a)});
+    num.textContent=(a<9?'0':'')+(a+1)+' / '+(n<10?'0':'')+n;
     var T=root.querySelector('.arc-progress').offsetWidth,M=T*68/290;fill.style.width=(M+a/(n-1)*(T-M))+'px';
   }
   function go(i){a=(i%n+n)%n;lay()}

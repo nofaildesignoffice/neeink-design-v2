@@ -848,13 +848,15 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 /* 4·5 Class — tf-device / ab-row: 큰 이미지 + 상하 라인으로 묶인 텍스트 */
 .v2-svc .split{gap:clamp(20px,2.6vw,50px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
 .v2-svc .ba-pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-self:center}
-.v2-svc .split>div:not(.img-placeholder):not(.ba-pair){border-top:1px solid #6b6470;border-bottom:1px solid #6b6470;padding:clamp(28px,2.4vw,46px) 0 clamp(30px,2.6vw,50px)}
+.v2-svc .split>div:not(.img-placeholder):not(.ba-pair){padding:clamp(28px,2.4vw,46px) 0 clamp(30px,2.6vw,50px)}
 .v2-svc .img-placeholder{border-radius:8px}
 /* 2단일 때 이미지가 행 높이에 늘어나며 4:5 비율로 가로폭이 커져 텍스트와 겹치던 문제 방지 */
 @media (min-width:769px){.v2-svc .split>.img-placeholder{aspect-ratio:auto!important;width:100%;min-width:0;min-height:0}}
 .v2-svc .section-title{font-size:clamp(26px,2.19vw,42px)}
 .v2-svc .checks{margin-top:24px}
-.v2-svc .checks li{padding:16px 0}
+.v2-svc .checks{display:flex;flex-direction:column;gap:10px}
+.v2-svc .checks li,.v2-svc .checks li:last-child{padding:18px 22px;background:#fff;border:none;border-radius:10px;box-shadow:0 2px 14px -4px rgba(72,46,98,.12)}
+.v2-svc .checks+.btn{margin-top:32px}
 .v2-svc .checks h4{font-size:17px;font-weight:500}
 .v2-svc .checks p{font-size:15px}
 .v2-svc .class-fee{border-top-color:var(--pp-l);font-size:15px}
@@ -1088,7 +1090,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
         <h2 class="section-title">급속교정 클래스</h2>
         <p class="section-desc" style="margin-bottom:8px">눈매가 달라져도 흔들리지 않는 판단 기준을 만듭니다. 온라인으로 이론과 데모를 먼저 보고, 오프라인에서 100% 내 손으로 완성합니다.</p>
         <ul class="checks"><li><i data-lucide="check-circle-2"></i><div><h4>11단계 상세 교정</h4><p>상담부터 마무리 멘트까지, 시술 흐름 그대로</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>유지력 8주 물광 연화법</h4><p>시간이 아니라 모발 상태로 연화를 판단합니다</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>롯드 기초 → 이론 → 실습</h4><p>지금 필요한 단계부터 고르는 세 가지 클래스</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>디플로마 · 수료 후 카톡 피드백</h4><p>샵에서 막히는 순간에도 물어보실 수 있습니다</p></div></li></ul>
-        <p class="class-fee">롯드 왕초보 온라인 기초반 <b>5만 9천원</b> · 온라인 이론 클래스 <b>29만 9천원</b> · 연화 특허기술 패키지 <b>79만원부터</b><small>패키지 VAT 별도 · 온라인 + 100% 실습</small></p>
         <a href="page_02.html" class="btn btn-primary btn-arrow">급속교정 클래스 자세히 보기</a>
       </div>
     </div>
@@ -1104,7 +1105,6 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
         <h2 class="section-title">AI 마케팅 클래스</h2>
         <p class="section-desc" style="margin-bottom:8px">공개하기 어려웠던 시술 사진을, 게시할 수 있는 콘텐츠로. AI로 고객 얼굴은 바꾸고, 원장님의 작업 결과는 그대로 보여주세요.</p>
         <ul class="checks"><li><i data-lucide="check-circle-2"></i><div><h4>얼굴만 AI로 변환</h4><p>속눈썹 작업 결과는 그대로 둡니다</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>콘텐츠 5개 이상 완성</h4><p>내 고객 사진으로 수업 시간 안에 만들어 갑니다</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>프롬프트 · 동영상 제작법</h4><p>검증된 방법만 골라 바로 씁니다</p></div></li><li><i data-lucide="check-circle-2"></i><div><h4>카톡 피드백 1개월 · 1년</h4><p>그룹 1개월, 1:1 1년</p></div></li></ul>
-        <p class="class-fee">Group 3:1 <b>50만원</b> · Private 1:1 <b>100만원</b><small>부가세 별도 · 노트북 또는 태블릿 지참</small></p>
         <a href="page_03.html" class="btn btn-primary btn-arrow">AI 마케팅 클래스 자세히 보기</a>
       </div>
       <div class="ba-pair" style="gap:12px">

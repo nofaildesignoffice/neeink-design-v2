@@ -804,12 +804,14 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-info .sp-glow{position:absolute;top:112px;right:105px;width:345px;height:345px;border-radius:50%;background:rgba(180,134,68,.3);filter:blur(100px);animation:v2pulse 4s ease-in-out infinite;pointer-events:none}
 @keyframes v2pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.15);opacity:1}}
 .v2-info-hd{position:relative;z-index:3;text-align:center;padding-top:clamp(110px,11.35vw,218px)}
-.v2-info-hd .circle-ani{display:flex;justify-content:center;list-style:none;padding:0;margin:0}
-.v2-info-hd .circle-ani li{width:12px;height:12px;border-radius:50%;background:#fff;margin-right:-3px;animation:v2dot 2.4s ease-in-out infinite}
-.v2-info-hd .circle-ani li:nth-child(2){opacity:.85;animation-delay:.12s}
-.v2-info-hd .circle-ani li:nth-child(3){opacity:.7;animation-delay:.24s}
-.v2-info-hd .circle-ani li:nth-child(4){opacity:.55;animation-delay:.36s}
-.v2-info-hd .circle-ani li:nth-child(5){opacity:.4;animation-delay:.48s}
+.circle-ani{display:flex;list-style:none;padding:0;margin:0}
+.v2-info-hd .circle-ani{justify-content:center}
+.circle-ani li{width:12px;height:12px;border-radius:50%;background:var(--pp);margin-right:-3px;animation:v2dot 2.4s ease-in-out infinite}
+.v2-info-hd .circle-ani li{background:#fff}
+.circle-ani li:nth-child(2){opacity:.85;animation-delay:.12s}
+.circle-ani li:nth-child(3){opacity:.7;animation-delay:.24s}
+.circle-ani li:nth-child(4){opacity:.55;animation-delay:.36s}
+.circle-ani li:nth-child(5){opacity:.4;animation-delay:.48s}
 @keyframes v2dot{0%,100%{transform:none}50%{transform:translateY(-4px)}}
 .v2-info-hd .section-label{padding:19px 0;margin:0;color:#fff;font-size:clamp(40px,3.33vw,64px);line-height:1.1;letter-spacing:-.04em}
 .v2-info-hd .section-title{color:#fff;font-size:clamp(20px,1.46vw,28px);margin-bottom:14px}
@@ -819,7 +821,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .arc-ring{position:absolute;left:50%;top:285px;transform:translateX(-50%);width:2300px;height:700px;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%)}
 .arc-ring{--d:2300px}
 .arc-logos{position:absolute;left:0;top:0;width:var(--d);height:var(--d);animation:v2spin 120s linear infinite reverse}
-.arc-logos span{position:absolute;left:50%;top:22px;width:116px;height:32px;margin-left:-58px;transform-origin:58px calc(var(--d) / 2 - 22px);transform:rotate(var(--a));background:rgba(255,255,255,.55);-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat}
+.arc-logos span{position:absolute;left:50%;top:22px;--lw:calc(var(--d) * .0857);width:var(--lw);height:calc(var(--lw) * .2757);margin-left:calc(var(--lw) / -2);transform-origin:calc(var(--lw) / 2) calc(var(--d) / 2 - 22px);transform:rotate(var(--a));background:rgba(255,255,255,.55);-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat}
 @keyframes v2spin{to{transform:rotate(360deg)}}
 .arc-track{position:relative;height:637px;counter-reset:arc}
 .arc-card{position:absolute;left:50%;top:0;width:482px;height:637px;margin-left:-241px;counter-increment:arc;transform-origin:center center;will-change:transform;transition:transform .5s cubic-bezier(.25,.46,.45,.94),opacity .5s;overflow:hidden;isolation:isolate}
@@ -841,6 +843,8 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-info-stats .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:none;border-radius:0;background:transparent;overflow:visible;border-top:1px solid rgba(255,255,255,.18);border-left:1px solid rgba(255,255,255,.18)}
 .v2-info-stats .stats>div{border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);padding:clamp(36px,4vw,72px) clamp(24px,2.2vw,42px);min-height:clamp(150px,13.9vw,200px);text-align:left;display:flex;flex-direction:column;justify-content:flex-start;transition:background .4s}
 .v2-info-stats .stats>div:hover{background:rgba(255,255,255,.04)}
+.v2-info-stats .stats>div{position:relative}
+.v2-info-stats .stats .st-ic{position:absolute;top:clamp(24px,2.4vw,40px);right:clamp(24px,2.2vw,42px);width:clamp(26px,2.2vw,36px);height:clamp(26px,2.2vw,36px);stroke-width:1.4;color:rgba(255,255,255,.75)}
 .v2-info-stats .stats .v{font-family:var(--serif-en);font-weight:400;font-size:clamp(36px,3vw,58px);letter-spacing:-.02em;color:#fff;line-height:1.1}
 .v2-info-stats .stats .k{font-family:var(--serif-ko);font-size:clamp(14px,1vw,18px);color:rgba(255,255,255,.65);margin-top:12px;letter-spacing:-.05em}
 .v2-info-stats .src{margin-top:28px;color:rgba(255,255,255,.4)}
@@ -902,7 +906,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-value .split{gap:0;align-items:stretch;grid-template-columns:49.427% 1fr;min-height:750px}
 .v2-value .split>.img-placeholder{aspect-ratio:auto!important;border-radius:0;min-height:100%;background:linear-gradient(160deg,#efeae6,#ddd3e3)}
 .v2-value .split>div:not(.img-placeholder){padding:clamp(66px,8.177vw,157px) 60px clamp(70px,9vw,170px) clamp(24px,6vw,120px);position:relative;background:radial-gradient(60% 50% at 100% 100%,rgba(144,112,175,.16),transparent 70%)}
-.v2-value .split>div:not(.img-placeholder)::before{content:"";display:block;width:48px;height:12px;margin-bottom:26px;background:var(--dots);animation:v2dots 3s ease-in-out infinite}
+.v2-value .circle-ani{margin-bottom:26px}
 .v2-value .split>div:not(.img-placeholder)::after{content:"02";position:absolute;right:6%;top:clamp(50px,6vw,110px);font-family:var(--serif-en);font-size:clamp(52px,6.25vw,120px);line-height:1;color:#5a5062;opacity:.06;pointer-events:none}
 .v2-value .section-desc{max-width:560px}
 .v2-value .checks{max-width:560px;margin-top:clamp(30px,3vw,56px)}
@@ -916,7 +920,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-cta .banner::before{content:"";position:absolute;left:-120px;bottom:-200px;width:420px;height:420px;border-radius:50%;background:radial-gradient(closest-side,rgba(144,112,175,.28),transparent),radial-gradient(closest-side at 70% 50%,rgba(215,166,97,.18),transparent);filter:blur(30px);pointer-events:none}
 .v2-cta .banner>*{position:relative}
 .v2-cta .banner .section-label{font-size:clamp(36px,3.33vw,64px);color:#000;letter-spacing:-.04em;line-height:1.1;margin-bottom:18px!important;display:flex;flex-direction:column;gap:18px}
-.v2-cta .banner .section-label::before{content:"";width:48px;height:12px;background:var(--dots)}
+.v2-cta .banner .circle-ani{margin-bottom:18px}
 .v2-cta .banner .section-label::after{content:none}
 .v2-cta .banner h3{font-family:var(--serif-ko);font-weight:400;font-size:clamp(20px,1.6vw,30px);letter-spacing:-.06em;color:#000;margin-bottom:12px;line-height:1.4}
 .v2-cta .banner p{font-size:16px;color:var(--tx)}
@@ -972,6 +976,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .v2-info-stats .stats{grid-template-columns:1fr 1fr}
   .v2-info-stats .stats>div{padding:26px 18px;min-height:0}
   .v2-info-stats .stats .k{font-size:13px}
+  .v2-info-stats .stats .st-ic{top:18px;right:16px;width:22px;height:22px}
   .v2-svc .split,.v2-svc-b .split{grid-template-columns:minmax(0,1fr)}
   .v2-svc-b .split>div:first-child{order:2}
   .v2-svc .section-title{font-size:26px}
@@ -1068,14 +1073,13 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   </div>
   <div class="container v2-info-stats">
     <div class="stats">
-      <div><p class="v">6년</p><p class="k">니잉 운영</p></div>
-      <div><p class="v">6,000+</p><p class="k">누적 시술</p></div>
-      <div><p class="v">500+</p><p class="k">교육으로 만난 원장님</p></div>
-      <div><p class="v">200+</p><p class="k">마스터크루 원장님</p></div>
-      <div><p class="v">1,000+</p><p class="k">네이버 리뷰</p></div>
-      <div><p class="v">수상</p><p class="k">래쉬애딕트 최고 교육지사상</p></div>
+      <div><i data-lucide="store" class="st-ic"></i><p class="v">6년</p><p class="k">니잉 운영</p></div>
+      <div><i data-lucide="eye" class="st-ic"></i><p class="v">6,000+</p><p class="k">누적 시술</p></div>
+      <div><i data-lucide="graduation-cap" class="st-ic"></i><p class="v">500+</p><p class="k">교육으로 만난 원장님</p></div>
+      <div><i data-lucide="users" class="st-ic"></i><p class="v">200+</p><p class="k">마스터크루 원장님</p></div>
+      <div><i data-lucide="message-square-heart" class="st-ic"></i><p class="v">1,000+</p><p class="k">네이버 리뷰</p></div>
+      <div><i data-lucide="award" class="st-ic"></i><p class="v">수상</p><p class="k">래쉬애딕트 최고 교육지사상</p></div>
     </div>
-    <p class="src text-center">[클라이언트 확인 필요: 각 수치의 기준일 · 수상 연도]</p>
   </div>
 </section>
 </div>
@@ -1166,6 +1170,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
     <div class="split">
       <div class="img-placeholder" style="aspect-ratio:4/5"><i data-lucide="image"></i></div>
       <div>
+        <ul class="circle-ani" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ul>
         <p class="section-label">Master Crew</p>
         <h2 class="section-title">니잉 마스터크루</h2>
         <p class="section-desc" style="margin-bottom:8px">시술 매출에 제품 판매 매출을 더하는 길이 있습니다. 이미 200여 명의 원장님이 마스터크루에서 함께하고 있어요.</p>
@@ -1181,6 +1186,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   <div class="container">
     <div class="banner">
       <div>
+        <ul class="circle-ani" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ul>
         <p class="section-label" style="margin-bottom:8px">For customers</p>
         <h3>래쉬애딕트, 가까운 샵에서 직접 상담받고 구매하세요</h3>
         <p>지역과 매장명으로 래쉬애딕트 취급 매장을 찾을 수 있습니다.</p>

@@ -757,15 +757,21 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 
 /* ---------- index v2 — 신유외과 메인 ---------- */
 /* 1 Hero — sc_visual: 풀스크린, 좌측 대형 타이틀, 세로 가이드 라인, 우하단 흰 슬라이드 카드 */
-.v2-hero{height:100vh;height:100dvh;min-height:680px;max-height:1080px}
+/* 1 Hero — sc_visual.sticky: 화면에 고정되고, 아래 패널이 위로 덮으며 올라옴 */
+.v2-stack{position:relative}
+.v2-hero{position:sticky;top:0;z-index:1;height:100vh;height:100dvh;min-height:620px}
 .v2-hero .hero-ph{background:radial-gradient(45% 60% at 62% 42%,#b9a3c9 0%,rgba(185,163,201,0) 70%),linear-gradient(170deg,#a99cb0 0%,#8d7f97 45%,#6d6077 100%);animation:v2zoom 2s cubic-bezier(.22,1,.36,1) both}
 .v2-hero .hero-slide.is-active .hero-ph{animation:v2zoom 2s cubic-bezier(.22,1,.36,1) both}
 @keyframes v2zoom{from{transform:scale(1.08)}to{transform:scale(1)}}
 .v2-hero .hero-slide:nth-child(2) .hero-ph{background:radial-gradient(45% 60% at 70% 40%,#c9b6a3 0%,rgba(201,182,163,0) 70%),linear-gradient(170deg,#b0a59c 0%,#8f8378 50%,#6b6058 100%)}
 .v2-hero .hero-slide:nth-child(3) .hero-ph{background:radial-gradient(45% 60% at 66% 46%,#a58bbd 0%,rgba(165,139,189,0) 70%),linear-gradient(170deg,#6a5a78 0%,#4a3a58 50%,#2a2230 100%)}
-.v2-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,transparent calc(31.5% - .5px),rgba(255,255,255,.28) calc(31.5% - .5px),rgba(255,255,255,.28) calc(31.5% + .5px),transparent calc(31.5% + .5px),transparent calc(68.5% - .5px),rgba(255,255,255,.28) calc(68.5% - .5px),rgba(255,255,255,.28) calc(68.5% + .5px),transparent calc(68.5% + .5px))}
-.v2-hero .hero-slide{align-items:flex-start;text-align:left;padding:0 max(20px,calc(50vw - 700px))}
-.v2-hero .hero-body{max-width:900px;margin-top:40px}
+.v2-vline{position:absolute;inset:0;z-index:1;pointer-events:none}
+.v2-vline span{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.45);transform:scaleY(0);animation:v2line 1.6s cubic-bezier(.65,0,.35,1) .2s forwards}
+.v2-vline span:first-child{left:31.615%;transform-origin:top center}
+.v2-vline span:last-child{left:68.333%;transform-origin:bottom center}
+@keyframes v2line{to{transform:scaleY(1)}}
+.v2-hero .hero-slide{align-items:flex-start;justify-content:flex-end;text-align:left;padding:0 max(20px,calc(50vw - 700px)) calc(clamp(100px,12vh,150px) + 100px)}
+.v2-hero .hero-body{max-width:900px}
 .v2-hero h1,.v2-hero h2{font-family:var(--serif-ko);font-size:clamp(34px,3.6vw,68px);font-weight:400;letter-spacing:-.06em;line-height:1.25;color:#fff;margin-bottom:22px}
 .v2-hero .hero-slide.is-active h1,.v2-hero .hero-slide.is-active h2{animation:v2up .8s cubic-bezier(.215,.61,.355,1) both .15s}
 .v2-hero .hero-slide.is-active p{animation:v2up .8s cubic-bezier(.215,.61,.355,1) both .35s}
@@ -781,14 +787,53 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-hero .hero-arrow.prev{right:max(20px,calc(50vw - 700px));left:auto;border-radius:0 0 6px 0}
 .v2-hero .hero-arrow svg{width:16px;height:16px}
 
-/* 2 Stats — SHINYU SPECIAL CLINIC: 다크 플럼 + 1px 셀 그리드 + athena 숫자 */
-.v2-stats{background:radial-gradient(40% 60% at 85% 20%,rgba(144,112,175,.3),transparent 70%),radial-gradient(40% 50% at 10% 90%,rgba(110,64,154,.2),transparent 70%),var(--plum);border-radius:clamp(30px,4vw,80px) clamp(30px,4vw,80px) 0 0;margin-top:-1px}
-.v2-stats .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:none;border-radius:0;background:transparent;overflow:visible;border-top:1px solid rgba(255,255,255,.18);border-left:1px solid rgba(255,255,255,.18)}
-.v2-stats .stats>div{border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);padding:clamp(36px,4vw,72px) clamp(24px,2.2vw,42px);min-height:clamp(150px,13.9vw,200px);text-align:left;display:flex;flex-direction:column;justify-content:flex-start;transition:background .4s}
-.v2-stats .stats>div:hover{background:rgba(255,255,255,.04)}
-.v2-stats .stats .v{font-family:var(--serif-en);font-weight:400;font-size:clamp(36px,3vw,58px);letter-spacing:-.02em;color:#fff;line-height:1.1}
-.v2-stats .stats .k{font-family:var(--serif-ko);font-size:clamp(14px,1vw,18px);color:rgba(255,255,255,.65);margin-top:12px;letter-spacing:-.05em}
-.v2-stats .src{margin-top:28px;color:rgba(255,255,255,.4)}
+/* 2·3 Reviews + Stats — sc_info.group_info1: 히어로 위로 올라오는 라운드 다크 패널 + 원형 아크 카드 슬라이더 */
+.v2-info{position:relative;z-index:2;color:#fff;overflow:hidden;border-radius:103px 103px 0 0;padding-bottom:clamp(90px,8vw,150px);background:radial-gradient(60% 45% at 50% 62%,rgba(144,112,175,.38),transparent 70%),radial-gradient(40% 30% at 12% 8%,rgba(110,64,154,.35),transparent 70%),linear-gradient(180deg,#2c2235 0%,#1f1b22 55%,#1a161d 100%)}
+.v2-info .sp-glow{position:absolute;top:112px;right:105px;width:345px;height:345px;border-radius:50%;background:rgba(180,134,68,.3);filter:blur(100px);animation:v2pulse 4s ease-in-out infinite;pointer-events:none}
+@keyframes v2pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.15);opacity:1}}
+.v2-info-hd{position:relative;z-index:3;padding-top:clamp(110px,11.35vw,218px)}
+.v2-info-hd .circle-ani{display:flex;list-style:none;padding:0;margin:0}
+.v2-info-hd .circle-ani li{width:12px;height:12px;border-radius:50%;background:#fff;margin-right:-3px;animation:v2dot 2.4s ease-in-out infinite}
+.v2-info-hd .circle-ani li:nth-child(2){opacity:.85;animation-delay:.12s}
+.v2-info-hd .circle-ani li:nth-child(3){opacity:.7;animation-delay:.24s}
+.v2-info-hd .circle-ani li:nth-child(4){opacity:.55;animation-delay:.36s}
+.v2-info-hd .circle-ani li:nth-child(5){opacity:.4;animation-delay:.48s}
+@keyframes v2dot{0%,100%{transform:none}50%{transform:translateY(-4px)}}
+.v2-info-hd .section-label{padding:19px 0;margin:0;color:#fff;font-size:clamp(40px,3.33vw,64px);line-height:1.1;letter-spacing:-.04em}
+.v2-info-hd .section-title{color:#fff;font-size:clamp(20px,1.46vw,28px);margin-bottom:14px}
+.v2-info-hd .section-desc{color:rgba(255,255,255,.65);margin:0}
+.v2-arc{position:relative;margin-top:clamp(40px,4.5vw,90px);height:840px;cursor:grab;user-select:none;touch-action:pan-y}
+.v2-arc:active{cursor:grabbing}
+.arc-ring{position:absolute;left:50%;top:285px;transform:translateX(-50%);width:2300px;height:700px;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%)}
+.arc-ring i{position:absolute;left:0;top:0;width:2300px;height:2300px;border-radius:50%;animation:v2spin 60s linear infinite;background:repeating-conic-gradient(rgba(255,255,255,.3) 0 .12deg,transparent .12deg 3deg);-webkit-mask:radial-gradient(closest-side,transparent calc(100% - 26px),#000 calc(100% - 26px),#000 calc(100% - 14px),transparent calc(100% - 14px));mask:radial-gradient(closest-side,transparent calc(100% - 26px),#000 calc(100% - 26px),#000 calc(100% - 14px),transparent calc(100% - 14px))}
+.arc-ring::before,.arc-ring::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.22);left:0;top:0;width:2300px;height:2300px;box-sizing:border-box}
+.arc-ring::after{left:60px;top:60px;width:2180px;height:2180px;border-color:rgba(255,255,255,.12)}
+@keyframes v2spin{to{transform:rotate(360deg)}}
+.arc-track{position:relative;height:637px;counter-reset:arc}
+.arc-card{position:absolute;left:50%;top:0;width:482px;height:637px;margin-left:-241px;counter-increment:arc;transform-origin:center center;will-change:transform;transition:transform .5s cubic-bezier(.25,.46,.45,.94),opacity .5s;overflow:hidden;isolation:isolate}
+.arc-card .img-placeholder{position:absolute;inset:0;aspect-ratio:auto;border:none;border-radius:0;background:radial-gradient(60% 50% at 50% 35%,#d9cde3 0%,rgba(217,205,227,0) 70%),linear-gradient(170deg,#b5a6c2 0%,#8d7f97 55%,#5d5068 100%);color:rgba(255,255,255,.5)}
+.arc-card:nth-child(even) .img-placeholder{background:radial-gradient(60% 50% at 50% 35%,#e6d9cb 0%,rgba(230,217,203,0) 70%),linear-gradient(170deg,#bfb1a3 0%,#948677 55%,#62574d 100%)}
+.arc-card .img-placeholder::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.28))}
+.arc-meta{position:absolute;left:46px;right:46px;bottom:52px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:11px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+.arc-card.is-active .arc-meta{opacity:1;visibility:visible}
+.arc-meta .pg::before{content:counter(arc,decimal-leading-zero) " / 10";font-family:var(--serif-en);font-size:25px;letter-spacing:-.04em;line-height:1.2;color:#fff;white-space:nowrap}
+.arc-meta .ln{display:block;width:100%;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,#fff 50%,rgba(255,255,255,0) 100%)}
+.arc-progress{position:absolute;left:50%;top:708px;transform:translateX(-50%);width:290px;height:27px;z-index:6}
+.arc-progress .track{position:absolute;left:0;top:6px;width:100%;height:1px;background:rgba(255,255,255,.5)}
+.arc-progress .fill{position:absolute;left:0;top:6px;width:0;height:1px;background:#fff;transition:width .4s ease}
+.arc-text{position:absolute;z-index:7;top:90px;right:max(20px,5vw);width:min(400px,calc(50vw - 241px - 5vw - 24px));display:grid;pointer-events:none}
+.arc-t{grid-area:1/1;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;opacity:0;transition:opacity .5s}
+.arc-t.is-active{opacity:1}
+.arc-t .m{order:-1;padding:12px 24px;font-size:14px;color:#fff;letter-spacing:-.02em;border:1px solid rgba(255,255,255,.55);border-radius:50%;white-space:nowrap}
+.arc-t .q{font-family:var(--serif-ko);font-size:clamp(17px,1.25vw,22px);line-height:1.6;letter-spacing:-.05em;color:rgba(255,255,255,.88);word-break:keep-all}
+.arc-t .q strong{color:#fff;font-weight:700}
+.v2-info-stats{position:relative;z-index:3;margin-top:clamp(40px,4vw,80px)}
+.v2-info-stats .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:none;border-radius:0;background:transparent;overflow:visible;border-top:1px solid rgba(255,255,255,.18);border-left:1px solid rgba(255,255,255,.18)}
+.v2-info-stats .stats>div{border-right:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);padding:clamp(36px,4vw,72px) clamp(24px,2.2vw,42px);min-height:clamp(150px,13.9vw,200px);text-align:left;display:flex;flex-direction:column;justify-content:flex-start;transition:background .4s}
+.v2-info-stats .stats>div:hover{background:rgba(255,255,255,.04)}
+.v2-info-stats .stats .v{font-family:var(--serif-en);font-weight:400;font-size:clamp(36px,3vw,58px);letter-spacing:-.02em;color:#fff;line-height:1.1}
+.v2-info-stats .stats .k{font-family:var(--serif-ko);font-size:clamp(14px,1vw,18px);color:rgba(255,255,255,.65);margin-top:12px;letter-spacing:-.05em}
+.v2-info-stats .src{margin-top:28px;color:rgba(255,255,255,.4)}
 
 /* 4·5 Class — tf-device / ab-row: 큰 이미지 + 상하 라인으로 묶인 텍스트 */
 .v2-svc .split{gap:clamp(20px,2.6vw,50px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
@@ -862,22 +907,56 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-cta .banner h3{font-family:var(--serif-ko);font-weight:400;font-size:clamp(20px,1.6vw,30px);letter-spacing:-.06em;color:#000;margin-bottom:12px;line-height:1.4}
 .v2-cta .banner p{font-size:16px;color:var(--tx)}
 
+@media (max-width:1200px){
+  .v2-info{border-radius:80px 80px 0 0}
+  .v2-arc{height:700px}
+  .arc-ring{top:230px;width:1880px;height:570px}
+  .arc-ring i,.arc-ring::before{width:1880px;height:1880px}
+  .arc-ring::after{width:1760px;height:1760px}
+  .arc-track{height:522px}
+  .arc-card{width:395px;height:522px;margin-left:-197.5px}
+  .arc-meta{left:36px;right:36px;bottom:42px;gap:9px}
+  .arc-meta .pg::before{font-size:20px}
+  .arc-progress{top:580px;width:240px}
+  .arc-text{top:70px;width:min(320px,calc(50vw - 197px - 5vw - 20px))}
+}
 @media (max-width:1024px){
+  .v2-info{border-radius:60px 60px 0 0}
+  .v2-arc{height:auto}
+  .arc-ring{top:200px;width:1600px;height:490px}
+  .arc-ring i,.arc-ring::before{width:1600px;height:1600px}
+  .arc-ring::after{width:1480px;height:1480px}
+  .arc-track{height:450px;margin-bottom:200px}
+  .arc-card{width:340px;height:450px;margin-left:-170px}
+  .arc-meta{left:28px;right:28px;bottom:36px;gap:8px}
+  .arc-meta .pg::before{font-size:18px}
+  .arc-progress{top:500px;width:200px}
+  .arc-text{position:relative;top:auto;right:auto;width:auto;max-width:560px;margin:0 auto;padding:0 24px}
   .v2-svc .split,.v2-svc-b .split{gap:32px}
   .v2-prog-list{grid-template-columns:1fr;max-width:640px;margin:0 auto}
   .v2-value .split>div:not(.img-placeholder){padding:80px 40px}
 }
 @media (max-width:768px){
   .v2-hero{min-height:560px;height:88dvh}
-  .v2-hero::before{background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(255,255,255,.22) calc(50% - .5px),rgba(255,255,255,.22) calc(50% + .5px),transparent calc(50% + .5px))}
-  .v2-hero .hero-slide{padding:0 20px}
+  .v2-hero .hero-slide{padding:0 20px 190px}
+  .v2-vline span:last-child{display:none}
+  .v2-vline span:first-child{left:50%}
+  .v2-info{border-radius:20px 20px 0 0}
+  .v2-info .sp-glow{top:60px;right:-80px;width:220px;height:220px}
+  .arc-ring{display:none}
+  .arc-track{height:auto;aspect-ratio:482/637;width:min(62vw,300px);margin:0 auto}
+  .arc-card{width:100%;height:100%;left:0;margin-left:0}
+  .arc-meta{left:20px;right:20px;bottom:28px}
+  .arc-progress{position:relative;top:auto;left:auto;transform:none;margin:28px auto 0;width:min(290px,70vw)}
+  .arc-text{margin-top:28px;padding:0 20px}
+  .arc-t .q{font-size:16px}
   .v2-hero h1,.v2-hero h2{font-size:30px}
   .v2-hero p{font-size:16px}
   .v2-hero .hero-cta{bottom:120px;left:20px}
   .v2-hero .hero-dots{bottom:56px;right:auto;left:20px;height:40px;padding:0 18px;border-radius:6px}
-  .v2-stats .stats{grid-template-columns:1fr 1fr}
-  .v2-stats .stats>div{padding:26px 18px;min-height:0}
-  .v2-stats .stats .k{font-size:13px}
+  .v2-info-stats .stats{grid-template-columns:1fr 1fr}
+  .v2-info-stats .stats>div{padding:26px 18px;min-height:0}
+  .v2-info-stats .stats .k{font-size:13px}
   .v2-svc .split,.v2-svc-b .split{grid-template-columns:minmax(0,1fr)}
   .v2-svc-b .split>div:first-child{order:2}
   .v2-svc .section-title{font-size:26px}
@@ -918,7 +997,9 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 
 
 <!-- ================= 섹션 1 : 히어로 (슬라이드 3장) ================= -->
+<div class="v2-stack">
 <section class="hero v2-hero" id="hero">
+  <div class="v2-vline" aria-hidden="true"><span></span><span></span></div>
   <div class="hero-slide is-active">
     <div class="hero-ph"><i data-lucide="image"></i><span>[히어로 배경 1 · 1920×1080 · 니잉 속눈썹펌 시술 결과]</span></div>
     <div class="hero-body">
@@ -946,9 +1027,44 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   <div class="hero-dots" id="hDots"><button class="is-active"></button><button></button><button></button></div>
 </section>
 
-<!-- ================= 섹션 2 : 신뢰 지표 ================= -->
-<section class="section v2-stats">
-  <div class="container">
+<!-- ================= 섹션 2·3 : 후기 + 신뢰 지표 (신유외과 sc_info — 히어로 위로 올라오는 라운드 패널) ================= -->
+<section class="v2-info">
+  <div class="sp-glow" aria-hidden="true"></div>
+  <div class="container v2-info-hd">
+    <ul class="circle-ani" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ul>
+    <p class="section-label">Reviews</p>
+      <h2 class="section-title">수업이 끝난 날, 원장님들이 보내주신 카톡</h2>
+      <p class="section-desc">과장 없이, 직접 남겨주신 후기 그대로 담았습니다.</p>
+  </div>
+  <div class="v2-arc" id="rvArc">
+    <div class="arc-ring" aria-hidden="true"><i></i></div>
+    <div class="arc-track">
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+        <article class="arc-card"><div class="img-placeholder"><i data-lucide="image"></i></div><div class="arc-meta" aria-hidden="true"><span class="pg"></span><span class="ln"></span></div></article>
+    </div>
+    <div class="arc-progress" aria-hidden="true"><span class="track"></span><span class="fill"></span></div>
+    <div class="arc-text">
+      <div class="arc-t"><p class="q">지금은 거의 <strong>복불복 없이 일정하게 결과</strong>가 나와요. 고객 컴플레인도 확 줄었고, 모발 끝 지글거림이나 AS 요청도 거의 없어졌어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">그동안 프롬프트 판매하는 거 이것저것 사보면서 돈은 돈대로 썼는데, 만족스러운 결과물은 10장 중에 1장 나올까 말까 … <strong>이건 진짜 대면으로 하루라도 빨리 들어야 하는 수업</strong>이에요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">제가 <strong>롯드를 완전히 기준도 감도 없이 골랐다</strong>는 걸 알았습니다. 눈매 딱 보라고 했던 것만 보니까 어떤 눈이 와도 어렵지 않아요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">솔직히 컴퓨터 진짜 약한 편이라 수업 가기 전날까지도 걱정했어요 … <strong>저도 제가 가진 사진으로 이렇게 만들어볼 수 있구나</strong> 싶어서 진짜 신기했어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">원래 네일이랑 왁싱 샵 운영하고 있는데 … 다음 예약으로도 연결돼서 <strong>바로 네이버에 메뉴 추가</strong>했어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">사진 10장을 돌려도 한 장 건질까 말까 해서 결국 포기하고 쌓아둔 사진만 가득했는데 <strong>이제 제 사진 창고 개방합니다</strong>!!!</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">속눈썹펌 매출도 예전보다 두 배 이상 늘었고, 단골 고객님들도 많이 생겼어요. 무엇보다 <strong>‘될까?’라는 불안감 대신 ‘이렇게 하면 된다’는 확신</strong>이 생기더라구요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">제일 좋았던 건 그냥 예쁘게 보정하는 법이 아니라 <strong>시술 결과 자체는 절대 바뀌지 않으면서</strong> 디테일을 살리는 방법을 알려주신다는 점이었어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">저 부산에서 KTX 타고 왔어요 … 특히 <strong>재료 선택하는 기준이랑 고객 유형별로 어떻게 다르게 접근</strong>해야 하는지 배운 게 진짜 실전에서 바로 써먹히더라고요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+      <div class="arc-t"><p class="q">인스타 영상 아무리 많이 봐도 알 수 없는 것들을 <strong>하루 만에 배웠어요</strong>. 독학으로 쌓은 시간이 아깝다기보다 이제 그게 다 제대로 정리된 느낌이에요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></div>
+    </div>
+  </div>
+  <div class="container v2-info-stats">
     <div class="stats">
       <div><p class="v">6년</p><p class="k">니잉 운영</p></div>
       <div><p class="v">6,000+</p><p class="k">누적 시술</p></div>
@@ -960,32 +1076,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
     <p class="src text-center">[클라이언트 확인 필요: 각 수치의 기준일 · 수상 연도]</p>
   </div>
 </section>
-
-<!-- ================= 섹션 3 : 후기 (10개 자동 전환 · 무한 반복) ================= -->
-<section class="section bg-light v2-rv">
-  <div class="container">
-    <div class="text-center">
-      <p class="section-label">Reviews</p>
-      <h2 class="section-title">수업이 끝난 날, 원장님들이 보내주신 카톡</h2>
-      <p class="section-desc">과장 없이, 직접 남겨주신 후기 그대로 담았습니다.</p>
-    </div>
-    <div class="loop" id="rvLoop">
-      <div class="loop-vp"><div class="loop-track">
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">지금은 거의 <strong>복불복 없이 일정하게 결과</strong>가 나와요. 고객 컴플레인도 확 줄었고, 모발 끝 지글거림이나 AS 요청도 거의 없어졌어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">그동안 프롬프트 판매하는 거 이것저것 사보면서 돈은 돈대로 썼는데, 만족스러운 결과물은 10장 중에 1장 나올까 말까 … <strong>이건 진짜 대면으로 하루라도 빨리 들어야 하는 수업</strong>이에요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">제가 <strong>롯드를 완전히 기준도 감도 없이 골랐다</strong>는 걸 알았습니다. 눈매 딱 보라고 했던 것만 보니까 어떤 눈이 와도 어렵지 않아요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">솔직히 컴퓨터 진짜 약한 편이라 수업 가기 전날까지도 걱정했어요 … <strong>저도 제가 가진 사진으로 이렇게 만들어볼 수 있구나</strong> 싶어서 진짜 신기했어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">원래 네일이랑 왁싱 샵 운영하고 있는데 … 다음 예약으로도 연결돼서 <strong>바로 네이버에 메뉴 추가</strong>했어요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">사진 10장을 돌려도 한 장 건질까 말까 해서 결국 포기하고 쌓아둔 사진만 가득했는데 <strong>이제 제 사진 창고 개방합니다</strong>!!!</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">속눈썹펌 매출도 예전보다 두 배 이상 늘었고, 단골 고객님들도 많이 생겼어요. 무엇보다 <strong>‘될까?’라는 불안감 대신 ‘이렇게 하면 된다’는 확신</strong>이 생기더라구요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">제일 좋았던 건 그냥 예쁘게 보정하는 법이 아니라 <strong>시술 결과 자체는 절대 바뀌지 않으면서</strong> 디테일을 살리는 방법을 알려주신다는 점이었어요.</p><p class="m">AI 마케팅 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">저 부산에서 KTX 타고 왔어요 … 특히 <strong>재료 선택하는 기준이랑 고객 유형별로 어떻게 다르게 접근</strong>해야 하는지 배운 게 진짜 실전에서 바로 써먹히더라고요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-        <article class="rv-card"><div class="img-placeholder"><i data-lucide="image"></i></div><p class="q">인스타 영상 아무리 많이 봐도 알 수 없는 것들을 <strong>하루 만에 배웠어요</strong>. 독학으로 쌓은 시간이 아깝다기보다 이제 그게 다 제대로 정리된 느낌이에요.</p><p class="m">급속교정 클래스 · 후기 원본 캡처</p></article>
-      </div></div>
-      <div class="tcar-nav"><button data-loop="-1"><i data-lucide="chevron-left"></i></button><button data-loop="1"><i data-lucide="chevron-right"></i></button></div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- ================= 섹션 4 : 급속교정 클래스 ================= -->
 <section class="section v2-svc v2-svc-a" id="edu">
@@ -1164,30 +1255,39 @@ function go(n){hi=(n+slides.length)%slides.length;slides.forEach(function(s,i){s
 function play(){timer=setInterval(function(){go(hi+1)},4500)}function reset(){clearInterval(timer);play()}
 dots.forEach(function(d,i){d.onclick=function(){go(i);reset()}});
 document.getElementById('hPrev').onclick=function(){go(hi-1);reset()};document.getElementById('hNext').onclick=function(){go(hi+1);reset()};play();
-/* 후기 무한 루프 캐러셀 — 3.5초 자동 전환, 마우스 올리면 정지 */
+/* 후기 — 신유외과 s04_swiper 원형 아크: 가운데 카드 기준 양옆 카드가 회전·하강·축소, 3초 자동 전환 */
 (function(){
-  var root=document.getElementById('rvLoop'),tr=root.querySelector('.loop-track'),orig=[].slice.call(tr.children),n=orig.length,i=0,busy=false,t;
-  orig.forEach(function(c){tr.appendChild(c.cloneNode(true))});
-  function step(){return tr.children[1].getBoundingClientRect().left-tr.children[0].getBoundingClientRect().left}
-  function set(anim){tr.style.transition=anim?'transform .6s ease':'none';tr.style.transform='translateX('+(-i*step())+'px)'}
-  function move(d){
-    if(busy)return;busy=true;
-    if(d<0&&i===0){i=n;set(false);tr.offsetHeight;}
-    i+=d;set(true);
+  var root=document.getElementById('rvArc'),cards=[].slice.call(root.querySelectorAll('.arc-card')),txt=[].slice.call(root.querySelectorAll('.arc-t')),fill=root.querySelector('.arc-progress .fill'),n=cards.length,a=0,t,prev=[];
+  function prm(){var w=innerWidth;return w<=768?null:w<=1024?{Y:140}:w<=1200?{Y:164}:{Y:200}}
+  function lay(){
+    var P=prm(),cw=cards[0].offsetWidth,gap=innerWidth<=768?16:innerWidth<=1024?64:88;
+    cards.forEach(function(c,i){
+      var d=((i-a)%n+n+Math.floor(n/2))%n-Math.floor(n/2),x=d*(cw+gap),tr,op;
+      if(P){var p=Math.max(-2,Math.min(2,d)),ab=Math.abs(p),k=Math.min(1,ab),y=ab<=1?ab*P.Y:P.Y+(ab-1)*P.Y;
+        tr='translateX('+x+'px) translateY('+y+'px) rotate('+(-p*22)+'deg) scale('+(1-k*.25)+')';op=ab<=1?1-k*.8:Math.max(0,.2*(2-ab));}
+      else{tr='translateX('+x+'px)';op=Math.abs(d)<=1?1:0}
+      c.style.transition=(prev[i]!==undefined&&Math.abs(prev[i]-d)>1)?'none':'';prev[i]=d;
+      c.style.transform=tr;c.style.opacity=op;c.style.zIndex=d===0?5:Math.abs(d)<=1?2:1;c.style.pointerEvents=op<.05?'none':'';
+      c.classList.toggle('is-active',d===0);
+    });
+    txt.forEach(function(e,i){e.classList.toggle('is-active',i===a)});
+    var T=root.querySelector('.arc-progress').offsetWidth,M=T*68/290;fill.style.width=(M+a/(n-1)*(T-M))+'px';
   }
-  tr.addEventListener('transitionend',function(){if(i>=n){i-=n;set(false)}busy=false});
-  function play(){clearInterval(t);t=setInterval(function(){move(1)},3500)}function stop(){clearInterval(t)}
-  root.querySelectorAll('[data-loop]').forEach(function(b){b.onclick=function(){move(+b.dataset.loop);play()}});
-  root.addEventListener('mouseenter',stop);root.addEventListener('mouseleave',play);
-  window.addEventListener('resize',function(){set(false)});
-  play();
+  function go(i){a=(i%n+n)%n;lay()}
+  var hov=false,drag=false;
+  function play(){clearInterval(t);if(!hov)t=setInterval(function(){go(a+1)},3000)}
+  cards.forEach(function(c,i){c.onclick=function(){if(drag){drag=false;return}if(i!==a){go(i);play()}}});
+  var sx=null;root.addEventListener('pointerdown',function(e){sx=e.clientX;drag=false});
+  root.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40){drag=true;go(a+(dx<0?1:-1));play();setTimeout(function(){drag=false},0)}});
+  root.addEventListener('mouseenter',function(){hov=true;clearInterval(t)});root.addEventListener('mouseleave',function(){hov=false;play()});
+  addEventListener('resize',lay);lay();play();
 })();
 
 
 /* v2 스크롤 등장 (신유외과 data-reveal="up") — 섹션 헤드·카드가 아래에서 올라옴 */
 (function(){
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var sel='.section .text-center,.section .split>*,.v2-prog-hd,.v2-prog-list>*,.hiw>*,.qline>*,.ls-row,.core-steps li,.proc>*,.cls-card,.prod-card,.cmp,.acc,.stats>div,.banner,.emp>*';
+  var sel='.section .text-center,.v2-info-hd>*,.section .split>*,.v2-prog-hd,.v2-prog-list>*,.hiw>*,.qline>*,.ls-row,.core-steps li,.proc>*,.cls-card,.prod-card,.cmp,.acc,.stats>div,.banner,.emp>*';
   var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){return !e.closest('.md')&&!e.closest('.loop-track')&&e.getClientRects().length});
   document.documentElement.classList.add('v2-rv-on');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});

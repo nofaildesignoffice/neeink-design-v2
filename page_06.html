@@ -927,7 +927,7 @@ document.querySelectorAll('.store-item').forEach(function(it){it.onclick=functio
 /* v2 스크롤 등장 (신유외과 data-reveal="up") — 섹션 헤드·카드가 아래에서 올라옴 */
 (function(){
   if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  var sel='.section .text-center,.section .split>*,.v2-prog-hd,.v2-prog-list>*,.hiw>*,.qline>*,.ls-row,.core-steps li,.proc>*,.cls-card,.prod-card,.cmp,.acc,.stats>div,.banner,.emp>*';
+  var sel='.section .text-center,.v2-info-hd>*,.section .split>*,.v2-prog-hd,.v2-prog-list>*,.hiw>*,.qline>*,.ls-row,.core-steps li,.proc>*,.cls-card,.prod-card,.cmp,.acc,.stats>div,.banner,.emp>*';
   var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){return !e.closest('.md')&&!e.closest('.loop-track')&&e.getClientRects().length});
   document.documentElement.classList.add('v2-rv-on');
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});

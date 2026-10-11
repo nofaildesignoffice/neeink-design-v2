@@ -801,8 +801,8 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-info{position:relative;z-index:2;color:#fff;overflow:hidden;border-radius:103px 103px 0 0;padding-bottom:clamp(90px,8vw,150px);background:radial-gradient(60% 45% at 50% 62%,rgba(144,112,175,.38),transparent 70%),radial-gradient(40% 30% at 12% 8%,rgba(110,64,154,.35),transparent 70%),linear-gradient(180deg,#2c2235 0%,#1f1b22 55%,#1a161d 100%)}
 .v2-info .sp-glow{position:absolute;top:112px;right:105px;width:345px;height:345px;border-radius:50%;background:rgba(180,134,68,.3);filter:blur(100px);animation:v2pulse 4s ease-in-out infinite;pointer-events:none}
 @keyframes v2pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.15);opacity:1}}
-.v2-info-hd{position:relative;z-index:3;padding-top:clamp(110px,11.35vw,218px)}
-.v2-info-hd .circle-ani{display:flex;list-style:none;padding:0;margin:0}
+.v2-info-hd{position:relative;z-index:3;text-align:center;padding-top:clamp(110px,11.35vw,218px)}
+.v2-info-hd .circle-ani{display:flex;justify-content:center;list-style:none;padding:0;margin:0}
 .v2-info-hd .circle-ani li{width:12px;height:12px;border-radius:50%;background:#fff;margin-right:-3px;animation:v2dot 2.4s ease-in-out infinite}
 .v2-info-hd .circle-ani li:nth-child(2){opacity:.85;animation-delay:.12s}
 .v2-info-hd .circle-ani li:nth-child(3){opacity:.7;animation-delay:.24s}
@@ -811,7 +811,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 @keyframes v2dot{0%,100%{transform:none}50%{transform:translateY(-4px)}}
 .v2-info-hd .section-label{padding:19px 0;margin:0;color:#fff;font-size:clamp(40px,3.33vw,64px);line-height:1.1;letter-spacing:-.04em}
 .v2-info-hd .section-title{color:#fff;font-size:clamp(20px,1.46vw,28px);margin-bottom:14px}
-.v2-info-hd .section-desc{color:rgba(255,255,255,.65);margin:0}
+.v2-info-hd .section-desc{color:rgba(255,255,255,.65);margin:0 auto}
 .v2-arc{position:relative;margin-top:clamp(40px,4.5vw,90px);height:840px;cursor:grab;user-select:none;touch-action:pan-y}
 .v2-arc:active{cursor:grabbing}
 .arc-ring{position:absolute;left:50%;top:285px;transform:translateX(-50%);width:2300px;height:700px;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 50%,rgba(0,0,0,.35) 78%,transparent 100%)}
@@ -828,7 +828,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .arc-card.is-active .img-placeholder::after{opacity:1}
 .arc-meta{position:absolute;left:46px;right:46px;bottom:52px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s,visibility .4s,transform .4s}
 .arc-card.is-active .arc-meta{opacity:1;visibility:visible;transform:none}
-.arc-meta .m{order:-1;padding:11px 24px;font-size:14px;color:#fff;letter-spacing:-.02em;border:1px solid rgba(255,255,255,.6);border-radius:50%;white-space:nowrap}
+.arc-meta .m{order:-1;padding:8px 18px;font-size:14px;color:#fff;letter-spacing:-.02em;border:1px solid rgba(255,255,255,.6);border-radius:999px;white-space:nowrap}
 .arc-meta .q{font-family:var(--serif-ko);font-size:clamp(17px,1.2vw,21px);line-height:1.6;letter-spacing:-.05em;color:rgba(255,255,255,.9);word-break:keep-all}
 .arc-meta .q strong{color:#fff;font-weight:700}
 .arc-num{position:absolute;left:50%;top:666px;transform:translateX(-50%);margin:0;font-family:var(--serif-en);font-weight:300;font-size:22px;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.2;white-space:nowrap;z-index:6}
@@ -938,7 +938,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   .arc-card{width:340px;height:450px;margin-left:-170px}
   .arc-meta{left:24px;right:24px;bottom:30px;gap:14px}
   .arc-meta .q{font-size:14.5px}
-  .arc-meta .m{font-size:13px;padding:9px 18px}
+  .arc-meta .m{font-size:13px;padding:7px 16px}
   .arc-num{top:470px;font-size:18px}
   .arc-progress{top:508px;width:200px}
   .v2-svc .split,.v2-svc-b .split{gap:32px}

@@ -684,7 +684,7 @@ body{color:var(--tx);letter-spacing:-.03em;background:var(--iv)}
 :root{--dots:radial-gradient(circle 6px at 6px 6px,#6e409a 98%,transparent) 0 0/12px 12px no-repeat,radial-gradient(circle 6px at 6px 6px,#6e409ad9 98%,transparent) 9px 0/12px 12px no-repeat,radial-gradient(circle 6px at 6px 6px,#6e409ab3 98%,transparent) 18px 0/12px 12px no-repeat,radial-gradient(circle 6px at 6px 6px,#6e409a8c 98%,transparent) 27px 0/12px 12px no-repeat,radial-gradient(circle 6px at 6px 6px,#6e409a66 98%,transparent) 36px 0/12px 12px no-repeat}
 @keyframes v2dots{0%,100%{width:48px}50%{width:21px}}
 /* 가운데 헤드: 제목 아래 세로선(vline) */
-.text-center>.section-title::after{content:"";display:block;width:1px;height:clamp(40px,4vw,80px);background:rgba(0,0,0,.22);margin:28px auto 0}
+.text-center>.section-title::after{content:none;display:block;width:1px;height:clamp(40px,4vw,80px);background:rgba(0,0,0,.22);margin:28px auto 0}
 .bg-dark .section-label,.bg-dark .section-title{color:#fff}
 .bg-dark .text-center>.section-title::after{background:rgba(255,255,255,.3)}
 .bg-dark .section-desc{color:rgba(255,255,255,.7)}
@@ -841,9 +841,9 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
 .v2-rv .loop-vp{width:100vw;margin-left:calc(50% - 50vw);padding:40px 0 70px max(20px,calc(50vw - 700px))}
 .v2-rv .loop-track{gap:40px;align-items:stretch}
 .v2-rv .loop-track>*{flex:0 0 350px}
-.v2-rv .rv-card{position:relative;background:#fff;border:1px solid rgba(0,0,0,.2);border-radius:20px;min-height:414px;padding:40px 30px;box-shadow:none;display:flex;flex-direction:column;text-align:left;transition:background-color .4s ease,border-color .4s ease,transform .55s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
+.v2-rv .rv-card{position:relative;background:#fff;border:1px solid rgba(0,0,0,.2);border-radius:20px;min-height:0;padding:14px 14px 26px;box-shadow:none;display:flex;flex-direction:column;text-align:left;transition:background-color .4s ease,border-color .4s ease,transform .55s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
 .v2-rv .rv-card:hover{background:var(--pp-d);border-color:rgba(255,255,255,.2);transform:translateY(16px) rotate(3deg);box-shadow:0 20px 40px rgba(72,46,98,.25);z-index:2}
-.v2-rv .rv-card .img-placeholder{width:100%;aspect-ratio:16/9;border-radius:12px;margin:0 0 24px;flex-shrink:0;order:1}
+.v2-rv .rv-card .img-placeholder{width:100%;aspect-ratio:16/9;border-radius:8px;margin:0 0 20px;flex-shrink:0;order:1}
 .v2-rv .rv-card .m{order:0;margin:0 0 14px;padding:0;font-size:15px;font-weight:600;color:var(--pp-s);letter-spacing:-.45px;transition:color .35s}
 .v2-rv .rv-card .q{order:2;font-family:var(--serif-ko);font-size:19px;line-height:1.55;letter-spacing:-.05em;color:#000;transition:color .35s}
 .v2-rv .rv-card .q strong{color:var(--pp);font-weight:700;transition:color .35s}
@@ -855,7 +855,7 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
   .v2-rv .loop-vp{padding:24px 0 40px 20px}
   .v2-rv .loop-track{gap:16px}
   .v2-rv .loop-track>*{flex-basis:270px}
-  .v2-rv .rv-card{min-height:340px;padding:26px 22px}
+  .v2-rv .rv-card{min-height:0;padding:10px 10px 22px}
   .v2-rv .rv-card .q{font-size:16px}
   .v2-rv .rv-card:hover{transform:none}
 }
@@ -924,10 +924,11 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-adv .hiw>div:hover{transform:translateY(-6px)}
 .v2-adv .hiw .img-placeholder{order:-1;aspect-ratio:4/3;border-radius:8px;margin-bottom:24px}
 .v2-adv .hiw h3{font-size:clamp(16px,1.04vw,20px);font-weight:500;color:#000;margin:0 10px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
-.v2-adv .hiw h3::before{content:"Point 0" counter(pt);font-family:var(--serif-en);font-size:15px;font-weight:400;color:var(--pp);letter-spacing:0}
+.v2-adv .hiw h3::before{content:"Step 0" counter(pt);font-family:var(--serif-en);font-size:15px;font-weight:400;color:var(--pp);letter-spacing:0}
 .v2-adv .hiw p{font-size:15px;margin:0 10px;min-height:0;color:var(--tx);text-align:center;line-height:1.5}
 
 /* 3 Stories — sc_column 칼럼 카드(theme 공통) + 제목/더보기 */
+.v2-rv .rv-card h4,.v2-rv .rv-card .ex,.v2-rv .rv-card .more{margin-left:10px;margin-right:10px}
 .v2-rv .rv-card h4{order:2;font-family:var(--serif-ko);font-weight:400;font-size:22px;letter-spacing:-.06em;color:#000;line-height:1.4;margin-bottom:12px;transition:color .35s}
 .v2-rv .rv-card .ex{order:3;font-size:15px;color:rgba(0,0,0,.6);-webkit-line-clamp:4;transition:color .35s}
 .v2-rv .rv-card .more{order:4;margin-top:auto;padding-top:22px;display:inline-flex;align-items:center;gap:12px;font-size:13px;color:#000;text-decoration:none;transition:color .35s}
@@ -953,16 +954,16 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-emp>.container{max-width:none;padding:0}
 .v2-emp .split{gap:0;grid-template-columns:49.427% 1fr;align-items:stretch}
 .v2-emp .split>.img-placeholder{order:-1;aspect-ratio:auto!important;min-height:750px;border-radius:0;background:linear-gradient(160deg,#efeae6 0%,#e4dce9 100%)}
-.v2-emp .emp{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(70px,8.594vw,165px) 60px clamp(56px,6.458vw,124px);background:radial-gradient(70% 60% at 100% 0%,rgba(144,112,175,.14),transparent 70%),var(--iv-3)}
+.v2-emp .emp{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:clamp(70px,8.594vw,165px) 60px clamp(56px,6.458vw,124px);background:radial-gradient(70% 60% at 100% 0%,rgba(144,112,175,.14),transparent 70%),var(--iv-3)}
 .v2-emp .emp>*{max-width:610px}
-.v2-emp .emp-big{font-family:var(--serif-en);font-size:clamp(15px,.9vw,17px);font-weight:400;letter-spacing:0;text-transform:none;color:var(--pp);margin-bottom:22px;display:flex;flex-direction:column;align-items:center;gap:22px}
+.v2-emp .emp-big{font-family:var(--serif-en);font-size:clamp(15px,.9vw,17px);font-weight:400;letter-spacing:0;text-transform:none;color:var(--pp);margin-bottom:22px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
 .v2-emp .emp-big::before{content:"";width:48px;height:12px;background:var(--dots);animation:v2dots 3s ease-in-out infinite}
 .v2-emp .emp::after{content:"01";position:absolute;right:4.5%;top:clamp(40px,5vw,96px);font-family:var(--serif-en);font-size:clamp(52px,6.25vw,120px);line-height:1;color:#5a5062;opacity:.06;pointer-events:none}
 .v2-emp .section-title{margin-bottom:clamp(16px,1.5625vw,30px)}
 .v2-emp blockquote{border:none;padding:0;margin-top:0!important;font-family:inherit;font-size:clamp(14px,.94vw,18px);color:var(--pp);line-height:1.6}
 .v2-emp blockquote cite{color:var(--tx)}
 .v2-emp ul{margin:clamp(40px,4.5vw,86px) 0 36px;width:min(480px,100%);list-style:none;padding:0;counter-reset:ep}
-.v2-emp li{counter-increment:ep;padding:clamp(14px,1.25vw,24px) 0;border-bottom:1px solid var(--pp-l);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:clamp(15px,1vw,19px);color:#000;line-height:1.5}
+.v2-emp li{counter-increment:ep;padding:clamp(14px,1.25vw,24px) 0;border-bottom:1px solid var(--pp-l);display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:clamp(15px,1vw,19px);color:#000;line-height:1.5}
 .v2-emp li::before{content:"Point 0" counter(ep);display:block;position:static;width:auto;height:auto;background:none;border-radius:0;font-family:var(--serif-en);font-size:15px;color:var(--pp)}
 .v2-emp .link-inline{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:#000;font-weight:400;text-decoration:none}
 .v2-emp .link-inline:hover{color:var(--pp)}
@@ -1013,7 +1014,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 /* 9 Difference — cmp-price: 좌 명조 타이틀 / 우 행 목록 + 퍼플 결론 배너 */
 .v2-cmp>.container{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(30px,4vw,80px);max-width:1440px}
 .v2-cmp .text-center{grid-column:1;grid-row:1/4;text-align:left}
-.v2-cmp .text-center>.section-title::after{margin-left:0;margin-right:0;width:48px;height:1px}
+.v2-cmp .text-center>.section-title::after{content:"";margin-left:0;margin-right:0;width:48px;height:1px}
 .v2-cmp .cmp{grid-column:2;max-width:none;margin:0;border-collapse:collapse;border-top:1px solid #000;font-size:15px}
 .v2-cmp .cmp th,.v2-cmp .cmp td{border-bottom:1px solid var(--line-2);padding:clamp(16px,1.4vw,26px) 18px;text-align:left}
 .v2-cmp .cmp thead th{font-size:15px;font-weight:500;color:rgba(0,0,0,.5);background:transparent;border-bottom:1px solid var(--line)}

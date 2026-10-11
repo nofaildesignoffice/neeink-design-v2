@@ -759,6 +759,13 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .section-label,.v2-adv .hiw h3::before,.v2-emp .emp-big,.v2-emp li::before,.v2-cause .ls-row .n,.v2-sol .ls-row .n,.v2-cls .cls-card p.brand{font-weight:500;letter-spacing:-.01em}
 .v2-info-stats .stats .v,.v2-sub .hstats .v,.arc-meta .pg::before{font-variant-numeric:tabular-nums;letter-spacing:-.04em}
 .page-head .section-label,.v2-sub .label,.v2-letter .label{letter-spacing:-.01em}
+/* GNB — 로고·메뉴·유틸 모두 세로 중앙 정렬, 활성 메뉴는 밑줄 없이 글자색만 변경 */
+.nav-inner{align-items:center}
+.nav-logo{display:flex;align-items:center;align-self:center}
+.nav-links,.nav-item{height:100%;align-items:center}
+.nav-item>a,.nav.is-scrolled .nav-item>a{display:flex;align-items:center;height:100%;padding-top:0;padding-bottom:0;line-height:1}
+.nav-item>a::after{content:none}
+.nav-utils{align-self:center}
 
 /* ---------- index v2 — 신유외과 메인 ---------- */
 /* 1 Hero — sc_visual: 풀스크린, 좌측 대형 타이틀, 세로 가이드 라인, 우하단 흰 슬라이드 카드 */

@@ -656,7 +656,7 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
 .q-aside{position:fixed;right:30px;bottom:40px;z-index:96;display:flex;flex-direction:column;align-items:center;gap:7.5px;width:74px;transition:bottom .3s}
 body:has(.fixcta.is-show) .q-aside{bottom:110px}
 .q-panel{display:flex;flex-direction:column;gap:22.5px;padding:33px 10.5px;background:#fff;border-radius:150px;box-shadow:1.5px 1.5px 5.625px rgba(0,0,0,.1);width:100%}
-.q-link{display:flex;flex-direction:column;align-items:center;gap:4.5px;padding:0 3px;color:#7c7c7c;text-decoration:none;transition:color .25s}
+.q-link{border:0;background:none;cursor:pointer;font:inherit;display:flex;flex-direction:column;align-items:center;gap:4.5px;padding:0 3px;color:#7c7c7c;text-decoration:none;transition:color .25s}
 .q-link svg{width:21px;height:21px;stroke-width:1.6}
 .q-link span,.q-call span{font-size:13px;font-weight:600;letter-spacing:-.04em;line-height:1.3;text-align:center;word-break:keep-all;white-space:nowrap}
 .q-link:hover,.q-link:focus-visible{color:var(--pp-s)}
@@ -666,6 +666,26 @@ body:has(.fixcta.is-show) .q-aside{bottom:110px}
 .q-call::after{content:attr(data-tip);position:absolute;right:calc(100% + 12px);top:50%;transform:translate(10px,-50%);opacity:0;visibility:hidden;pointer-events:none;white-space:nowrap;background:#fff;padding:10px 14px;box-shadow:1.5px 1.5px 5.625px rgba(0,0,0,.1);border-radius:150px;font-size:13px;line-height:1.2;color:#423351;transition:opacity .28s,transform .28s,visibility .28s}
 .q-call:hover,.q-call:focus-visible{background:#523f63}
 .q-call:hover::after,.q-call:focus-visible::after{opacity:1;visibility:visible;transform:translate(0,-50%)}
+.q-md{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;padding:20px}
+.q-md[hidden]{display:none}
+.q-md-bg{position:absolute;inset:0;background:rgba(31,27,34,.55)}
+.q-md-box{position:relative;width:min(400px,100%);background:#fff;border-radius:24px;padding:44px 32px 32px;text-align:center;box-shadow:0 30px 60px -20px rgba(31,27,34,.4)}
+.q-md-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border:0;background:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#7c7c7c;cursor:pointer}
+.q-md-x:hover{background:var(--pp-xl);color:var(--pp)}
+.q-md-x svg{width:20px;height:20px}
+.q-md-ic{display:inline-flex;width:56px;height:56px;border-radius:50%;align-items:center;justify-content:center;background:#fee500;color:#3c1e1e;margin-bottom:18px}
+.q-md-ic svg{width:26px;height:26px}
+.q-md-tt{font-family:var(--serif-ko);font-size:21px;color:#000;letter-spacing:-.05em;margin:0 0 8px}
+.q-md-ds{font-size:14px;color:var(--tx);margin:0 0 22px}
+.q-md-code{display:flex;align-items:center;justify-content:center;gap:14px;padding:18px;border-radius:14px;background:var(--iv-3,#f7f3ef);margin-bottom:22px}
+.q-md-code span{font-size:14px;color:var(--tx)}
+.q-md-code b{font-family:var(--serif-en);font-weight:500;font-size:34px;letter-spacing:.08em;color:var(--pp-d);font-variant-numeric:tabular-nums}
+.q-md-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q-md-btns>*{height:52px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.q-md-copy{border:1px solid var(--pp);background:#fff;color:var(--pp)}
+.q-md-copy:hover,.q-md-copy.is-done{background:var(--pp-xl)}
+.q-md-go{background:var(--pp);color:#fff;border:1px solid var(--pp)}
+.q-md-go:hover{background:var(--pp-d);border-color:var(--pp-d)}
 .q-aside .q-top{position:static;display:flex;align-items:center;justify-content:center;width:50px;height:50px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#c0c0c0;cursor:pointer;transition:color .25s}
 .q-aside .q-top svg{width:22px;height:34px;stroke-width:1}
 .q-aside .q-top:hover,.q-aside .q-top:focus-visible{color:var(--pp-s);background:transparent}
@@ -679,7 +699,7 @@ body:has(.fixcta.is-show) .q-aside{bottom:110px}
 .page-head .section-label::before,.page-head .section-label::after{content:none}
 .page-head h1{font-family:var(--serif-ko);font-size:clamp(28px,3.44vw,66px);font-weight:500;letter-spacing:-.06em;color:#fff;line-height:1.2;margin-bottom:18px}
 .page-head p{font-size:clamp(13px,1.15vw,22px);color:#fff;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:16px}
-.page-head p::before{content:"";width:clamp(48px,10.42vw,200px);height:1px;background:rgba(255,255,255,.75)}
+.page-head p::before{content:none}
 
 @media (max-width:1280px){
   .nav{left:24px;right:24px}
@@ -938,14 +958,28 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 <!-- 우측 고정 퀵메뉴 (신유 aside_footer) -->
 <aside class="q-aside" aria-label="바로가기">
   <div class="q-panel">
-    <a href="https://www.instagram.com/neeink.woody/" class="q-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>인스타</span></a>
-    <a href="https://pf.kakao.com/_xdxkxkbG/chat" class="q-link" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i><span>카톡 상담</span></a>
+    <a href="https://www.instagram.com/neeink.woody" class="q-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>인스타</span></a>
+    <button type="button" class="q-link" id="qKakao" aria-haspopup="dialog"><i data-lucide="message-circle"></i><span>카톡 상담</span></button>
     <a href="page_06.html" class="q-link"><i data-lucide="store"></i><span>래쉬애딕트<br>매장 찾기</span></a>
     <a href="#" class="q-link" title="[링크 확인 필요]"><i data-lucide="monitor-play"></i><span>라이브<br>클래스</span></a>
   </div>
-  <a href="#" class="q-call" title="[링크 확인 필요]" data-tip="니잉 네이버 예약"><i data-lucide="calendar-check"></i><span>네이버 예약</span></a>
+  <a href="https://m.place.naver.com/place/1287253631/ticket?entry=pll&amp;bk_query=%EB%8B%88%EC%9E%89%EC%9A%B0%EB%94%94%20%EC%86%8D%EB%88%88%EC%8D%B9" class="q-call" target="_blank" rel="noopener noreferrer" data-tip="니잉 우디 강남 신논현점 예약하기"><i data-lucide="calendar-check"></i><span>네이버 예약</span></a>
   <button type="button" class="q-top top-btn" id="topBtn" aria-label="맨 위로"><i data-lucide="move-up"></i></button>
 </aside>
+<div class="q-md" id="qKakaoMd" role="dialog" aria-modal="true" aria-labelledby="qKakaoTt" hidden>
+  <div class="q-md-bg" data-close></div>
+  <div class="q-md-box">
+    <button type="button" class="q-md-x" data-close aria-label="닫기"><i data-lucide="x"></i></button>
+    <span class="q-md-ic"><i data-lucide="message-circle"></i></span>
+    <p class="q-md-tt" id="qKakaoTt">니잉 카카오톡 오픈채팅 상담</p>
+    <p class="q-md-ds">입장 시 아래 참여코드를 입력해 주세요.</p>
+    <div class="q-md-code"><span>참여코드</span><b>1008</b></div>
+    <div class="q-md-btns">
+      <button type="button" class="q-md-copy" id="qKakaoCopy">참여코드 복사하기</button>
+      <a href="https://open.kakao.com/o/g6wEjjRi" class="q-md-go" target="_blank" rel="noopener noreferrer">입장하기</a>
+    </div>
+  </div>
+</div>
 
 
 <script>
@@ -954,6 +988,13 @@ lucide.createIcons();
 var nav=document.getElementById('nav'), topBtn=document.getElementById('topBtn');
 window.addEventListener('scroll',function(){var y=window.scrollY;nav.classList.toggle('is-scrolled',y>60);topBtn.classList.toggle('is-show',y>400);});
 topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+(function(){var md=document.getElementById('qKakaoMd'),cp=document.getElementById('qKakaoCopy');if(!md)return;
+  function open(){md.hidden=false;document.body.style.overflow='hidden'}function close(){md.hidden=true;document.body.style.overflow='';cp.textContent='참여코드 복사하기';cp.classList.remove('is-done')}
+  document.getElementById('qKakao').onclick=open;md.querySelectorAll('[data-close]').forEach(function(e){e.onclick=close});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!md.hidden)close()});
+  function done(){cp.textContent='복사되었습니다';cp.classList.add('is-done')}
+  cp.onclick=function(){var t='1008';if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fb)}else fb();
+    function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}}})();
 document.getElementById('burger').onclick=function(){document.getElementById('mMenu').classList.toggle('is-open')};
 document.querySelectorAll('.m-group > button').forEach(function(b){b.onclick=function(){b.parentElement.classList.toggle('is-open')}});
 /* 아코디언 */

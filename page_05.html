@@ -866,7 +866,13 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
 .v2-rv .rv-card .q strong{color:var(--pp);font-weight:700;transition:color .35s}
 .v2-rv .rv-card:hover .m{color:var(--gold)}
 .v2-rv .rv-card:hover .q,.v2-rv .rv-card:hover .q strong{color:#fff}
-.v2-rv .tcar-nav{margin-top:20px}
+.v2-rv .container{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px}
+.v2-rv .container>.text-center{grid-column:1;grid-row:1;text-align:left}
+.v2-rv .container>.text-center .section-desc{margin-left:0;margin-right:0}
+.v2-rv .loop{display:contents}
+.v2-rv .loop-vp{grid-column:1/-1;grid-row:2}
+.v2-rv .tcar-nav{grid-column:2;grid-row:1;align-self:end;margin:0}
+@media (max-width:768px){.v2-rv .tcar-nav{grid-column:1/-1;grid-row:3;justify-content:center;margin-top:4px}}
 @media (max-width:768px){
   .v2-rv::before{width:320px;height:320px;left:-80px}
   .v2-rv .loop-vp{padding:24px 0 40px 20px}
@@ -929,7 +935,7 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-sub h1{font-family:var(--serif-ko);font-size:clamp(28px,3.2vw,60px);font-weight:500;letter-spacing:-.06em;line-height:1.25;margin-bottom:22px}
 .v2-sub .lead{font-size:clamp(14px,1.05vw,20px);color:#fff;letter-spacing:-.03em;line-height:1.6;display:flex;flex-direction:column;align-items:center;gap:22px}
 .v2-sub .lead::before{content:"";flex:none;width:1px;height:clamp(40px,3.6vw,68px);background:rgba(255,255,255,.75)}
-.v2-sub .hstats{gap:0;margin-top:clamp(36px,3.6vw,64px);justify-content:center;border-top:1px solid rgba(255,255,255,.25);padding-top:26px}
+.v2-sub .hstats{gap:0;margin-top:clamp(36px,3.6vw,64px);justify-content:center;padding-top:0}
 .v2-sub .hstats>div{padding:0 48px 0 0;margin-right:48px;border-right:1px solid rgba(255,255,255,.25);text-align:center}
 .v2-sub .hstats>div:last-child{border-right:none;margin-right:0}
 .v2-sub .hstats .k{font-size:14px;color:rgba(255,255,255,.7)}
@@ -1029,19 +1035,19 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
 .v2-core .core-steps b{display:block;font-size:clamp(16px,1.04vw,19px);font-weight:500;color:#000;margin:4px 0 6px}
 
 /* 9 Difference — cmp-price: 좌 명조 타이틀 / 우 행 목록 + 퍼플 결론 배너 */
-.v2-cmp>.container{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);column-gap:clamp(30px,4vw,80px);max-width:1440px}
-.v2-cmp .text-center{grid-column:1;grid-row:1/4;text-align:left}
-.v2-cmp .text-center>.section-title::after{content:"";margin-left:0;margin-right:0;width:48px;height:1px}
-.v2-cmp .cmp{grid-column:2;max-width:none;margin:0;border-collapse:collapse;border-top:1px solid #000;font-size:15px}
+.v2-cmp>.container{display:grid;grid-template-columns:minmax(0,1fr);max-width:1440px}
+.v2-cmp .text-center{grid-column:1;text-align:center;margin-bottom:clamp(36px,3.5vw,64px)}
+.v2-cmp .text-center>.section-title::after{content:"";margin:24px auto 0;width:48px;height:1px}
+.v2-cmp .cmp{grid-column:1;max-width:none;margin:0;border-collapse:collapse;border-top:1px solid #000;font-size:15px}
 .v2-cmp .cmp th,.v2-cmp .cmp td{border-bottom:1px solid var(--line-2);padding:clamp(16px,1.4vw,26px) 18px;text-align:left}
 .v2-cmp .cmp thead th{font-size:15px;font-weight:500;color:rgba(0,0,0,.5);background:transparent;border-bottom:1px solid var(--line)}
 .v2-cmp .cmp thead th.on{color:var(--pp)}
 .v2-cmp .cmp tbody th{font-weight:500;color:#000;width:16%}
 .v2-cmp .cmp tbody td{color:var(--tx);background:transparent}
 .v2-cmp .cmp tbody td.on{color:var(--pp-d);font-weight:600;background:rgba(110,64,154,.05)}
-.v2-cmp .answer{grid-column:2;margin-top:28px!important;font-family:inherit;font-size:clamp(14px,.94vw,17px)!important;letter-spacing:-.03em;text-align:left;color:#fff;background:var(--pp);border-radius:999px;padding:22px 36px;line-height:1.6}
+.v2-cmp .answer{grid-column:1;margin-top:28px!important;font-family:inherit;font-size:clamp(14px,.94vw,17px)!important;letter-spacing:-.03em;text-align:left;color:#fff;background:var(--pp);border-radius:999px;padding:22px 36px;line-height:1.6}
 .v2-cmp .answer b{color:#fff;background:none}
-.v2-cmp .src{grid-column:2;text-align:left!important;margin-top:16px}
+.v2-cmp .src{grid-column:1;text-align:left!important;margin-top:16px}
 
 /* 10 Process — tf-tech: 이미지 → 점선 연결 + 원형 점 → 보더 카드(STEP 0N) */
 .v2-step .proc{gap:clamp(12px,1.2vw,22px)}

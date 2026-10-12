@@ -714,7 +714,13 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
 .v2-rv .rv-card .q strong{color:var(--pp);font-weight:700;transition:color .35s}
 .v2-rv .rv-card:hover .m{color:var(--gold)}
 .v2-rv .rv-card:hover .q,.v2-rv .rv-card:hover .q strong{color:#fff}
-.v2-rv .tcar-nav{margin-top:20px}
+.v2-rv .container{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px}
+.v2-rv .container>.text-center{grid-column:1;grid-row:1;text-align:left}
+.v2-rv .container>.text-center .section-desc{margin-left:0;margin-right:0}
+.v2-rv .loop{display:contents}
+.v2-rv .loop-vp{grid-column:1/-1;grid-row:2}
+.v2-rv .tcar-nav{grid-column:2;grid-row:1;align-self:end;margin:0}
+@media (max-width:768px){.v2-rv .tcar-nav{grid-column:1/-1;grid-row:3;justify-content:center;margin-top:4px}}
 @media (max-width:768px){
   .v2-rv::before{width:320px;height:320px;left:-80px}
   .v2-rv .loop-vp{padding:24px 0 40px 20px}

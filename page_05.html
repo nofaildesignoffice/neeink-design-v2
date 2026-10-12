@@ -804,6 +804,24 @@ body>.nav+.m-menu+section,body>.nav+.m-menu+.page-head{margin-top:0}
 .footer-bottom nav a{color:rgba(255,255,255,.8)}
 .footer-sns a{background:transparent;border:.5px solid rgba(255,255,255,.5);border-radius:50%;color:#fff;width:40px;height:40px}
 .footer-sns a:hover{background:rgba(255,255,255,.1);border-color:#fff}
+/* 우측 고정 퀵메뉴 — shinyu aside_footer */
+.q-aside{position:fixed;right:30px;bottom:40px;z-index:96;display:flex;flex-direction:column;align-items:center;gap:7.5px;width:74px;transition:bottom .3s}
+body:has(.fixcta.is-show) .q-aside{bottom:110px}
+.q-panel{display:flex;flex-direction:column;gap:22.5px;padding:33px 10.5px;background:#fff;border-radius:150px;box-shadow:1.5px 1.5px 5.625px rgba(0,0,0,.1);width:100%}
+.q-link{display:flex;flex-direction:column;align-items:center;gap:4.5px;padding:0 3px;color:#7c7c7c;text-decoration:none;transition:color .25s}
+.q-link svg{width:21px;height:21px;stroke-width:1.6}
+.q-link span,.q-call span{font-size:13px;font-weight:600;letter-spacing:-.04em;line-height:1.3;text-align:center;word-break:keep-all;white-space:nowrap}
+.q-link:hover,.q-link:focus-visible{color:var(--pp-s)}
+.q-call{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:74px;aspect-ratio:1/1;border-radius:50%;background:#423351;color:#fff;text-decoration:none;transition:background-color .25s}
+.q-call svg{width:24px;height:24px;stroke-width:1.6}
+.q-call span{font-size:12.5px;font-weight:700;margin-top:3px}
+.q-call::after{content:attr(data-tip);position:absolute;right:calc(100% + 12px);top:50%;transform:translate(10px,-50%);opacity:0;visibility:hidden;pointer-events:none;white-space:nowrap;background:#fff;padding:10px 14px;box-shadow:1.5px 1.5px 5.625px rgba(0,0,0,.1);border-radius:150px;font-size:13px;line-height:1.2;color:#423351;transition:opacity .28s,transform .28s,visibility .28s}
+.q-call:hover,.q-call:focus-visible{background:#523f63}
+.q-call:hover::after,.q-call:focus-visible::after{opacity:1;visibility:visible;transform:translate(0,-50%)}
+.q-aside .q-top{position:static;display:flex;align-items:center;justify-content:center;width:50px;height:50px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#c0c0c0;cursor:pointer;transition:color .25s}
+.q-aside .q-top svg{width:22px;height:34px;stroke-width:1}
+.q-aside .q-top:hover,.q-aside .q-top:focus-visible{color:var(--pp-s);background:transparent}
+@media (max-width:1024px){.q-aside{right:10px;bottom:20px;transform:scale(.75);transform-origin:right bottom}body:has(.fixcta.is-show) .q-aside{bottom:90px}}
 .top-btn{background:var(--plum);border:1px solid rgba(255,255,255,.25);width:56px;height:56px;box-shadow:0 8px 24px -8px rgba(31,27,34,.5)}
 
 /* ===== 하위 페이지 헤드 — sub visual: 하단 스크림 + 나눔명조 66 + 가로선 ===== */
@@ -1423,8 +1441,17 @@ input[type=checkbox],input[type=radio]{accent-color:var(--pp)}
   </div>
 </footer>
 
-<!-- TOP -->
-<button class="top-btn" id="topBtn"><i data-lucide="arrow-up"></i></button>
+<!-- 우측 고정 퀵메뉴 (신유 aside_footer) -->
+<aside class="q-aside" aria-label="바로가기">
+  <div class="q-panel">
+    <a href="https://www.instagram.com/neeink.woody/" class="q-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>인스타</span></a>
+    <a href="https://pf.kakao.com/_xdxkxkbG/chat" class="q-link" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i><span>카톡 상담</span></a>
+    <a href="page_06.html" class="q-link"><i data-lucide="store"></i><span>래쉬애딕트<br>매장 찾기</span></a>
+    <a href="#" class="q-link" title="[링크 확인 필요]"><i data-lucide="monitor-play"></i><span>라이브<br>클래스</span></a>
+  </div>
+  <a href="#" class="q-call" title="[링크 확인 필요]" data-tip="니잉 네이버 예약"><i data-lucide="calendar-check"></i><span>네이버 예약</span></a>
+  <button type="button" class="q-top top-btn" id="topBtn" aria-label="맨 위로"><i data-lucide="move-up"></i></button>
+</aside>
 
 
 <!-- ================= 하단 고정 CTA 배너 ================= -->
